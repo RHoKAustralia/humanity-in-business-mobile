@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">HumanityInBusiness</string>
+
+    <string-array name="companies">
+        <item>Rhok</item>
+        <item>General Assembly</item>
+        <item>Westfield</item>
+        <item>NSW Gov</item>
+        <item>Commonwealth Bank</item>
+        <item>Westpac</item>
+        <item>NAB</item>
+        <item>Macquarrie</item>
+        <item>Accenture</item>
+    </string-array>
 </resources>

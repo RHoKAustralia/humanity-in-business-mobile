@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.ProfileActivity"
+        android:orientation="vertical">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="#FEF8E6"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+        <ImageView
+                android:id="@+id/expandedImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_fight"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"/>
+
+        <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mala Mahesh"
+                android:textSize="26sp"
+                android:textColor="@android:color/black"
+
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@id/expandedImage"/>
+
+        <TextView
+                android:id="@+id/tvCompanyTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tech Unicorn @ RHoK"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_toEndOf="@id/expandedImage"
+                android:layout_below="@id/tvName"/>
+
+        <TextView
+                android:id="@+id/tvPoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1,000 points"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_toEndOf="@id/expandedImage"
+                android:layout_below="@id/tvCompanyTitle"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:orientation="vertical">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upcoming challenge"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plant a tree day - 1st July 2019"
+                android:textSize="14dp"
+                android:layout_marginBottom="5dp"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/challenge_tree"/>
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My fights"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="12dp"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="12dp">
+        <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/sdg1"
+                android:layout_marginEnd="12dp"/>
+        <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/sdg2"
+                android:layout_marginEnd="12dp"/>
+        <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/sdg3"/>
+    </LinearLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Past activities"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="12dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clothes donation"
+            android:drawableStart="@android:drawable/presence_online"
+            android:drawablePadding="4dp"
+            android:textSize="14dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="12dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Soup day"
+            android:textSize="14dp"
+            android:drawableStart="@android:drawable/presence_online"
+            android:drawablePadding="4dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="12dp"/>
+</LinearLayout>

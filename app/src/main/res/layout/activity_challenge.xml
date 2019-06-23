@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.ChallengeActivity">
+
+    <ImageView
+            android:id="@+id/imgChallenge"
+            android:src="@drawable/challenge_tree"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+            android:layout_below="@id/imgChallenge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="12dp">
+        <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plant a tree day"
+                android:textSize="36dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="12dp"/>
+
+        <TextView
+                android:id="@+id/tvSubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="100 points"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+        <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plant a Tree Day is a great way to inspire your students to learn about the local environment while playing an active role in their community.
+Plant a Tree Day is traditionally held on the last Friday of July. If this is not an ideal time to plant, Tree Day activities can take place on any date, you just need to register when your activity will take place."
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1st July 2019"
+                android:layout_marginBottom="12dp"/>
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rosehill Primary School"
+                android:layout_marginBottom="12dp"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Badges"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star_big_on"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star_big_on"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star_big_on"/>
+        </LinearLayout>
+
+
+        <Button
+                android:id="@+id/btnJoin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yes, Join me in!"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"/>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.GoalsSelectionActivity"
+        android:layout_margin="12dp">
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose your fights"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            android:layout_alignParentTop="true"/>
+
+    <TextView
+            android:id="@+id/tvSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We'll use these to show you cool stuff."
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            android:layout_below="@id/tvTitle"/>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewGoalsSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:layout_below="@id/tvSubTitle"
+            android:layout_above="@id/btnDone"/>
+    <Button
+            android:id="@+id/btnDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_alignParentBottom="true"/>
+</RelativeLayout>
