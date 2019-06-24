@@ -125,6 +125,16 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             android:layout_marginStart="12dp"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ideation Night"
+            android:textSize="14dp"
+            android:drawableStart="@android:drawable/presence_online"
+            android:drawablePadding="4dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="12dp"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +156,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clothes donation"
+            android:text="Solving Cold Fusion"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"
             android:textSize="14dp"
@@ -155,10 +165,11 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Soup day"
+            android:text="Becoming Einstein"
             android:textSize="14dp"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"
             android:layout_marginBottom="12dp"
             android:layout_marginStart="12dp"/>
+
 </LinearLayout>
