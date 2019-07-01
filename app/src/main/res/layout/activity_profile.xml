@@ -26,7 +26,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mala Mahesh"
+                android:text="John Smith"
                 android:textSize="26sp"
                 android:textColor="@android:color/black"
 
@@ -38,7 +38,7 @@
                 android:id="@+id/tvCompanyTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tech Unicorn @ RHoK"
+                android:text="Technical Support"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
@@ -72,14 +72,14 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Plant a tree day - 1st July 2019"
+                android:text="Create a practical social media strategy - 1st July 2019"
                 android:textSize="14dp"
                 android:layout_marginBottom="5dp"/>
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/challenge_tree"/>
+                android:src="@drawable/dummy_chlg"/>
     </LinearLayout>
 
     <TextView
@@ -122,7 +122,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clothes donation"
+            android:text="Create a brand guide"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"
             android:textSize="14dp"
@@ -131,7 +131,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Soup day"
+            android:text="Setup/Refine our Google Analystics"
             android:textSize="14dp"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"

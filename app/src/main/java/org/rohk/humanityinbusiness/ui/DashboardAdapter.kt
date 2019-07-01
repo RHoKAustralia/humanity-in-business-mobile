@@ -13,9 +13,9 @@ import org.rohk.humanityinbusiness.R
 class DashboardAdapter(val listener: View.OnClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val titles = arrayOf(
         "Challenge of the week",
-        "Clothes donation",
-        "Pets at work", "Help the elderly", "Soup kitchen",
-        "Teach a skill", "Plant a tree day"
+        "Create a brand guide",
+        "Create a practical social media strategy", "Optimise our website SEO", "Design a standard marketing report",
+        "Setup/Refine our Google Analytics", "Create a marketing plan "
     )
 
     private val details = arrayOf(
@@ -31,10 +31,10 @@ class DashboardAdapter(val listener: View.OnClickListener) : RecyclerView.Adapte
         "100 pts, half day"
     )
     private val images = intArrayOf(
-        R.drawable.challenge_tree,
-        R.drawable.chlg7, R.drawable.chlg3,
-        R.drawable.chlg4, R.drawable.chlg5,
-        R.drawable.chlg6, R.drawable.chlg2
+        R.drawable.dummy_chlg,
+        R.drawable.dummy_chlg, R.drawable.dummy_chlg,
+        R.drawable.dummy_chlg, R.drawable.dummy_chlg,
+        R.drawable.dummy_chlg, R.drawable.dummy_chlg
     )
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): RecyclerView.ViewHolder {

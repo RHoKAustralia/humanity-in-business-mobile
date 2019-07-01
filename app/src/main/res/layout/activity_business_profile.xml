@@ -17,7 +17,7 @@
                 android:id="@+id/expandedImage"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/rohk_logo"
+                android:src="@drawable/nab"
                 android:layout_marginEnd="18dp"
                 android:layout_marginStart="12dp"
                 android:layout_alignParentTop="true"
@@ -27,7 +27,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Random Hacks of Kindness"
+                android:text="NAB"
                 android:textSize="26sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -38,7 +38,7 @@
                 android:id="@+id/tvSubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1st in the world"
+                android:text="27th in the world"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
@@ -72,7 +72,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hackathon - 22nd and 23rd June 2019"
+                android:text="Create a brand guide - 22nd and 23rd June 2019"
                 android:textSize="14dp"
                 android:layout_marginBottom="5dp"/>
         <ImageView
@@ -129,7 +129,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ideation Night"
+            android:text="Update the look and feel of our existing collateral material"
             android:textSize="14dp"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"
@@ -138,7 +138,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Women in tech"
+            android:text="Analyse our existing website / service / platform data and provide insights into our marketing activities"
             android:textSize="14dp"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"
@@ -147,16 +147,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Coding for everyone"
-            android:textSize="14dp"
-            android:drawableStart="@android:drawable/presence_online"
-            android:drawablePadding="4dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="12dp"/>
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Solving Cold Fusion"
+            android:text="Create a marketing plan (in line with our business plan and service provision)"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"
             android:textSize="14dp"
@@ -165,7 +156,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Becoming Einstein"
+            android:text="Optimise our website SEO"
             android:textSize="14dp"
             android:drawableStart="@android:drawable/presence_online"
             android:drawablePadding="4dp"

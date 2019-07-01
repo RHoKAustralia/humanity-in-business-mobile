@@ -8,7 +8,7 @@
 
     <ImageView
             android:id="@+id/imgChallenge"
-            android:src="@drawable/challenge_tree"
+            android:src="@drawable/dummy_chlg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="fitXY"
@@ -24,7 +24,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Plant a tree day"
+                android:text="Create a marketing plan"
                 android:textSize="36dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
@@ -43,8 +43,8 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Plant a Tree Day is a great way to inspire your students to learn about the local environment while playing an active role in their community.
-Plant a Tree Day is traditionally held on the last Friday of July. If this is not an ideal time to plant, Tree Day activities can take place on any date, you just need to register when your activity will take place."
+                android:text="Create a marketing plan is a great way to inspire your students to learn about marketing while playing an active role in their community.
+Create a marketing plan is traditionally held on the last Friday of July. If this is not an ideal time , activities can take place on any date, you just need to register when your activity will take place."
                 android:textSize="12dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
@@ -75,7 +75,7 @@ Plant a Tree Day is traditionally held on the last Friday of July. If this is no
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rosehill Primary School"
+                android:text="Sydney"
                 android:layout_marginBottom="12dp"/>
 
         <TextView
