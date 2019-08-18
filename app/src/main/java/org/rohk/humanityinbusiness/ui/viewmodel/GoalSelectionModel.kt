@@ -1,5 +1,3 @@
 package org.rohk.humanityinbusiness.ui.viewmodel
 
-import android.graphics.drawable.Drawable
-
-class GoalSelectionModel (val title: String, val image: Int, var isSelected: Boolean = false)
+class GoalSelectionModel(val id: Int, val title: String, val image_url: String, var isSelected: Boolean = false)

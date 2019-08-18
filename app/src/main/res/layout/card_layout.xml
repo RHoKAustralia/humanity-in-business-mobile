@@ -15,13 +15,12 @@
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:id="@+id/item_image"
+                android:id="@+id/imgItem"
                 android:layout_alignParentTop="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/dummy_chlg"/>
+                android:scaleType="fitXY"       />
 
         <LinearLayout
-                android:layout_below="@id/item_image"
+                android:layout_below="@id/imgItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -30,36 +29,33 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item_title"
-                    android:layout_toEndOf="@+id/item_image"
-                    android:layout_toRightOf="@+id/item_image"
+                    android:id="@+id/tvItemTitle"
+                    android:layout_toEndOf="@+id/imgItem"
+                    android:layout_toRightOf="@+id/imgItem"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="12dp"
                     android:textSize="16sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:text="Plant a tree day"/>
+                    android:textColor="@color/colorPrimaryDark"/>
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item_detail"
-                    android:layout_toEndOf="@+id/item_image"
-                    android:layout_toRightOf="@+id/item_image"
+                    android:id="@+id/tvItemDate"
+                    android:layout_toEndOf="@+id/imgItem"
+                    android:layout_toRightOf="@+id/imgItem"
                     android:layout_below="@+id/item_title"
                     android:layout_marginStart="12dp"
-                    android:textColor="@color/colorPrimary"
-                    android:text="1st July 2019"/>
+                    android:textColor="@color/colorPrimary"/>
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item_points"
-                    android:layout_toEndOf="@+id/item_image"
-                    android:layout_toRightOf="@+id/item_image"
+                    android:id="@+id/tvItemPoints"
+                    android:layout_toEndOf="@+id/imgItem"
+                    android:layout_toRightOf="@+id/imgItem"
                     android:layout_below="@+id/item_title"
                     android:layout_marginStart="12dp"
-                    android:textColor="@android:color/darker_gray"
-            android:text="100 pts, half day"/>
+                    android:textColor="@android:color/darker_gray"/>
         </LinearLayout>
     </RelativeLayout>
 

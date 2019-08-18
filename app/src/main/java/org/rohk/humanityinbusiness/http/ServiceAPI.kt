@@ -2,13 +2,11 @@ package org.rohk.humanityinbusiness.http
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import org.rohk.humanityinbusiness.http.model.RequestLoginModel
-import org.rohk.humanityinbusiness.http.model.RequestRegisterModel
-import org.rohk.humanityinbusiness.http.model.RequestSDGModel
-import org.rohk.humanityinbusiness.http.model.ResponseModel
+import okhttp3.logging.HttpLoggingInterceptor
+import org.rohk.humanityinbusiness.http.model.*
+import org.rohk.humanityinbusiness.ui.viewmodel.*
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -26,32 +24,117 @@ class ServiceAPI {
 
     fun getClient(): Retrofit {
         val builder = Retrofit.Builder()
-            .baseUrl("http://ec2-18-191-57-240.us-east-2.compute.amazonaws.com:8080/")
+            .baseUrl("https://humanity-in-business.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-        return builder.client(OkHttpClient.Builder().build()).build()
+
+        val okHttp = OkHttpClient.Builder()
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        okHttp.addInterceptor(interceptor)
+
+        return builder.client(okHttp.build()).build()
+    }
+
+    fun getAllCompanies(
+        callback: Callback<List<CompanyModel>>
+    ) {
+        val call: Call<List<CompanyModel>> = getService().getAllCompanies()
+        call.enqueue(callback)
     }
 
     fun register(
         request: RequestRegisterModel,
-        callback: Callback<ResponseModel>
+        callback: Callback<RegisterResponseModel>
     ) {
-        val call: Call<ResponseModel> = getService().register(request)
+        val call: Call<RegisterResponseModel> = getService().register(request)
         call.enqueue(callback)
     }
 
     fun login(
         request: RequestLoginModel,
-        callback: Callback<ResponseModel>
+        callback: Callback<RegisterResponseModel>
     ) {
-        val call: Call<ResponseModel> = getService().login(request)
+        val call: Call<RegisterResponseModel> = getService().login(request)
+        call.enqueue(callback)
+    }
+
+    fun getAllSDGGoals(callback: Callback<List<GoalSelectionModel>>) {
+        val call: Call<List<GoalSelectionModel>> = getService().getAllSDG()
+        call.enqueue(callback)
+    }
+
+    fun getSDGById(sdgId: String, callback: Callback<List<GoalSelectionModel>>) {
+        val call: Call<List<GoalSelectionModel>> = getService().getSDG(sdgId)
         call.enqueue(callback)
     }
 
     fun sendGoalsSelection(
+        userId: String,
         request: RequestSDGModel,
         callback: Callback<ResponseModel>
     ) {
-        val call: Call<ResponseModel> = getService().sdg(request)
+        val call: Call<ResponseModel> = getService().addSDG(userId, request)
         call.enqueue(callback)
     }
+
+    fun getProfile(userId: String, callback: Callback<ProfileModel>) {
+        val call: Call<ProfileModel> = getService().getProfile(userId)
+        call.enqueue(callback)
+    }
+
+
+    fun getUpcomingChallenges(
+        callback: Callback<List<ChallengeModel>>
+    ) {
+        val call: Call<List<ChallengeModel>> = getService().getUpcomingChallenges()
+        call.enqueue(callback)
+    }
+
+    fun getChallenge(
+        challengeId: Int,
+        callback: Callback<ChallengeModel>
+    ) {
+        val call: Call<ChallengeModel> = getService().getChallenge(challengeId)
+        call.enqueue(callback)
+    }
+
+    fun getUpcomingChallengesForUser(
+        userId: String,
+        callback: Callback<List<ChallengeModel>>
+    ) {
+        val call: Call<List<ChallengeModel>> = getService().getUpcomingChallengesByUser(userId)
+        call.enqueue(callback)
+    }
+
+    fun getCompletedChallenges(
+        userId: String,
+        callback: Callback<List<ChallengeModel>>
+    ) {
+        val call: Call<List<ChallengeModel>> = getService().getCompletedChallenges(userId)
+        call.enqueue(callback)
+    }
+
+    fun addChallenge(
+        request: RequestAddChallengeModel,
+        callback: Callback<RegisterResponseModel>
+    ) {
+        val call: Call<RegisterResponseModel> = getService().addChallengeToUser(request)
+        call.enqueue(callback)
+    }
+
+    fun getCompanyProfile(companyId: String, callback: Callback<CompanyModel>) {
+        val call: Call<CompanyModel> = getService().getCompanyById(companyId)
+        call.enqueue(callback)
+    }
+
+    fun getLeaderBoard(companyId: String, callback: Callback<List<LeaderBoardModel>>) {
+        val call: Call<List<LeaderBoardModel>> = getService().getCompanyLeaderBoard(companyId)
+        call.enqueue(callback)
+    }
+
+    fun getSDGsForCompany(companyId: String, callback: Callback<List<GoalSelectionModel>>) {
+        val call: Call<List<GoalSelectionModel>> = getService().getCompanySDGs(companyId)
+        call.enqueue(callback)
+    }
+
 }

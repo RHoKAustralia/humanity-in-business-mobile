@@ -12,7 +12,6 @@
             android:layout_height="120dp"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:src="@android:drawable/btn_star"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -26,5 +25,5 @@
             android:gravity="center"
             app:layout_constraintStart_toStartOf="@id/imgGoal"
             app:layout_constraintTop_toBottomOf="@id/imgGoal"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 </android.support.constraint.ConstraintLayout>

@@ -12,8 +12,12 @@
             android:roundIcon="@drawable/hib_logo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.BusinessProfileActivity"
+        <activity android:name=".ui.OnboardingActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+                android:name=".ui.BusinessProfileActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
                 android:name=".ui.ProfileActivity"

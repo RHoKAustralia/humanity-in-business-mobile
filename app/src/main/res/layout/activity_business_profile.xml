@@ -17,7 +17,6 @@
                 android:id="@+id/expandedImage"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/nab"
                 android:layout_marginEnd="18dp"
                 android:layout_marginStart="12dp"
                 android:layout_alignParentTop="true"
@@ -27,7 +26,6 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NAB"
                 android:textSize="26sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -38,7 +36,6 @@
                 android:id="@+id/tvSubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="27th in the world"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
@@ -49,7 +46,6 @@
                 android:id="@+id/tvPoints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="510,034,000 points"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
@@ -90,31 +86,14 @@
             android:textStyle="bold"
             android:layout_marginBottom="12dp"
             android:layout_marginStart="12dp"/>
-    <LinearLayout
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_marginStart="12dp"
+            android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="12dp">
-        <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/sdg1"
-                android:layout_marginEnd="12dp"/>
-        <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/sdg2"
-                android:layout_marginEnd="12dp"/>
-        <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/sdg3"
-                android:layout_marginEnd="12dp"/>
-        <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/sdg4"/>
-    </LinearLayout>
+            android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
     <TextView
             android:layout_width="match_parent"

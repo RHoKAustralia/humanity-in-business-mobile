@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_goal_selection.view.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.ui.viewmodel.GoalSelectionModel
+import org.rohk.humanityinbusiness.utils.GlideApp
 
-class GoalsSelectionAdapter(mainContext: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GoalsSelectionAdapter(mainContext: Context, private val clickListener: (GoalSelectionModel) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val context = mainContext
 
@@ -22,7 +23,7 @@ class GoalsSelectionAdapter(mainContext: Context) : RecyclerView.Adapter<Recycle
                 R.layout.item_goal_selection,
                 parent,
                 false
-            )
+            ), clickListener
         )
     }
 
@@ -38,10 +39,13 @@ class GoalsSelectionAdapter(mainContext: Context) : RecyclerView.Adapter<Recycle
         notifyDataSetChanged()
     }
 
-    class GoalsSelectionHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class GoalsSelectionHolder(itemView: View,
+                               private val clickListener: (GoalSelectionModel) -> Unit) : RecyclerView.ViewHolder(itemView) {
         fun bindView(goalSelectionModel: GoalSelectionModel, context: Context) {
             itemView.tvGoalTitle.text = goalSelectionModel.title
-            itemView.imgGoal.setImageDrawable(ContextCompat.getDrawable(context, goalSelectionModel.image))
+            GlideApp.with(context)
+                .load(goalSelectionModel.image_url)
+                .into(itemView.imgGoal)
 
             itemView.setOnClickListener {
                 if(!goalSelectionModel.isSelected) {
@@ -51,6 +55,8 @@ class GoalsSelectionAdapter(mainContext: Context) : RecyclerView.Adapter<Recycle
                     goalSelectionModel.isSelected = false
                     itemView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white))
                 }
+
+                clickListener(goalSelectionModel)
             }
         }
 

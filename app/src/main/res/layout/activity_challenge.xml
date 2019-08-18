@@ -8,7 +8,6 @@
 
     <ImageView
             android:id="@+id/imgChallenge"
-            android:src="@drawable/dummy_chlg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="fitXY"
@@ -24,7 +23,6 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create a marketing plan"
                 android:textSize="36dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
@@ -34,7 +32,6 @@
                 android:id="@+id/tvSubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100 points"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
@@ -43,8 +40,6 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create a marketing plan is a great way to inspire your students to learn about marketing while playing an active role in their community.
-Create a marketing plan is traditionally held on the last Friday of July. If this is not an ideal time , activities can take place on any date, you just need to register when your activity will take place."
                 android:textSize="12dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
@@ -58,9 +53,9 @@ Create a marketing plan is traditionally held on the last Friday of July. If thi
                 android:layout_marginBottom="5dp"/>
 
         <TextView
+                android:id="@+id/tvDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1st July 2019"
                 android:layout_marginBottom="12dp"/>
 
 
@@ -73,9 +68,9 @@ Create a marketing plan is traditionally held on the last Friday of July. If thi
                 android:layout_marginBottom="5dp"/>
 
         <TextView
+                android:id="@+id/tvLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sydney"
                 android:layout_marginBottom="12dp"/>
 
         <TextView

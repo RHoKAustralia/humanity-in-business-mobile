@@ -4,10 +4,20 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
         tools:context=".ui.RegisterActivity"
+        android:background="@drawable/img_background">
+
+<LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_margin="12dp">
+        android:layout_margin="12dp"
+        android:padding="12dp"
+        android:background="#ccffffff">
 
     <TextView
             android:layout_width="match_parent"
@@ -82,8 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            tools:listitem="@layout/support_simple_spinner_dropdown_item"
-            android:entries="@array/companies">
+            tools:listitem="@layout/support_simple_spinner_dropdown_item">
     </Spinner>
 
     <Button
@@ -91,9 +100,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Next"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
             android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"/>
 
+</LinearLayout>
 </LinearLayout>
