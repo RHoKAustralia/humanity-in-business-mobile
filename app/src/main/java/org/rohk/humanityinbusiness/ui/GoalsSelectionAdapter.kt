@@ -1,8 +1,8 @@
 package org.rohk.humanityinbusiness.ui
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +11,13 @@ import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.ui.viewmodel.GoalSelectionModel
 import org.rohk.humanityinbusiness.utils.GlideApp
 
-class GoalsSelectionAdapter(mainContext: Context, private val clickListener: (GoalSelectionModel) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GoalsSelectionAdapter(mainContext: Context, private val clickListener: (GoalSelectionModel) -> Unit) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     private val context = mainContext
 
     private var list = listOf<GoalSelectionModel>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return GoalsSelectionHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_goal_selection,
@@ -29,7 +29,7 @@ class GoalsSelectionAdapter(mainContext: Context, private val clickListener: (Go
 
     override fun getItemCount(): Int = list.size
 
-    override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val viewHolder = viewHolder as GoalsSelectionHolder
         viewHolder.bindView(list[position], context)
     }
@@ -40,7 +40,7 @@ class GoalsSelectionAdapter(mainContext: Context, private val clickListener: (Go
     }
 
     class GoalsSelectionHolder(itemView: View,
-                               private val clickListener: (GoalSelectionModel) -> Unit) : RecyclerView.ViewHolder(itemView) {
+                               private val clickListener: (GoalSelectionModel) -> Unit) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         fun bindView(goalSelectionModel: GoalSelectionModel, context: Context) {
             itemView.tvGoalTitle.text = goalSelectionModel.title
             GlideApp.with(context)

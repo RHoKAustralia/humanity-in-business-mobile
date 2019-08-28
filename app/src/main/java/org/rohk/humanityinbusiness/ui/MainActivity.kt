@@ -2,12 +2,12 @@ package org.rohk.humanityinbusiness.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.CollapsingToolbarLayout
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.widget.Toolbar
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.tvName
 import kotlinx.android.synthetic.main.activity_main.tvPoints
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
-import org.rohk.humanityinbusiness.ui.viewmodel.ChallengeModel
+import org.rohk.humanityinbusiness.ui.viewmodel.EventModel
 import org.rohk.humanityinbusiness.ui.viewmodel.ProfileModel
 import org.rohk.humanityinbusiness.utils.GlideApp
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
@@ -28,13 +28,15 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     lateinit var listAdapter: DashboardAdapter
-    lateinit var challengesList: List<ChallengeModel>
+//    lateinit var challengesList: List<ChallengeModel>
+    lateinit var eventsList: List<EventModel>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recycler_view.layoutManager = layoutManager
 
         listAdapter = DashboardAdapter(this, ::selectionListener)
@@ -44,10 +46,10 @@ class MainActivity : AppCompatActivity() {
         val mToolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(mToolbar)
 
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
+//        val fab = findViewById<FloatingActionButton>(R.id.fab)
+//        fab.setOnClickListener {
+//            startActivity(Intent(this, ProfileActivity::class.java))
+//        }
 
         val collapsingToolbarLayout = findViewById(R.id.toolbar_layout) as CollapsingToolbarLayout
         val appBarLayout = findViewById(R.id.app_bar) as AppBarLayout
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                     scrollRange = appBarLayout.totalScrollRange
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.title = "Let's start a challenge"
+                    collapsingToolbarLayout.title = "Let's start a event"
                     isShow = true
                 } else if (isShow) {
                     collapsingToolbarLayout.title =
@@ -71,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         getProfile()
-        getUpcomingChallenges()
+        getAllEvents(1) // todo get community
     }
 
     private fun getProfile() {
@@ -95,34 +97,68 @@ class MainActivity : AppCompatActivity() {
 
     private fun setProfile(profileModel: ProfileModel) {
         tvName.text = profileModel.full_name
-        tvPoints.text = "${profileModel.total_points} points"
+        tvPoints.text = "${profileModel.total_points} hours"
     }
 
 
-    private fun selectionListener(selectedChallenge: ChallengeModel) {
-        val intent = Intent(this, ChallengeActivity::class.java)
-        intent.putExtra("ID", selectedChallenge.id)
+    private fun selectionListener(selectedEvent: EventModel) {
+        val intent = Intent(this, EventActivity::class.java)
+        intent.putExtra("ID", selectedEvent.id)
+        intent.putExtra("community_id", selectedEvent.community_id)
+        intent.putExtra("name", selectedEvent.name)
+        intent.putExtra("description", selectedEvent.description)
+        intent.putExtra("date", selectedEvent.date)
+        intent.putExtra("hours", selectedEvent.hours)
+        intent.putExtra("image_url", selectedEvent.image_url)
         startActivity(intent)
 
     }
 
-    private fun getUpcomingChallenges() {
-        ServiceAPI().getUpcomingChallenges(
-            object : Callback<List<ChallengeModel>> {
+//    private fun getUpcomingChallenges() {
+//        ServiceAPI().getUpcomingChallenges(
+//            object : Callback<List<ChallengeModel>> {
+//                override fun onResponse(
+//                    call: Call<List<ChallengeModel>>,
+//                    response: Response<List<ChallengeModel>>
+//                ) {
+//                    response.body()?.let {
+//                        challengesList = it
+//                        listAdapter.setList(challengesList)
+//                    }
+//                    hideLoadingAnimation()
+//                }
+//
+//                override fun onFailure(call: Call<List<ChallengeModel>>, t: Throwable) {
+//                    Toast.makeText(applicationContext, "Oops, could not fetch challenges!", Toast.LENGTH_LONG)
+//                        .show()
+//                    hideLoadingAnimation()
+//                }
+//            })
+//    }
+
+    private fun getAllEvents(communityId : Int) {
+        ServiceAPI().getAllEvents(communityId,
+            object : Callback<List<EventModel>> {
                 override fun onResponse(
-                    call: Call<List<ChallengeModel>>,
-                    response: Response<List<ChallengeModel>>
+                    call: Call<List<EventModel>>,
+                    response: Response<List<EventModel>>
                 ) {
                     response.body()?.let {
-                        challengesList = it
-                        listAdapter.setList(challengesList)
+                        eventsList = it
+                        listAdapter.setList(eventsList)
                     }
+                    hideLoadingAnimation()
                 }
 
-                override fun onFailure(call: Call<List<ChallengeModel>>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Oops, could not fetch challenges!", Toast.LENGTH_LONG)
+                override fun onFailure(call: Call<List<EventModel>>, t: Throwable) {
+                    Toast.makeText(applicationContext, "Oops, could not fetch events!", Toast.LENGTH_LONG)
                         .show()
+                    hideLoadingAnimation()
                 }
             })
+    }
+
+    private fun hideLoadingAnimation() {
+        animationView.visibility = View.GONE
     }
 }

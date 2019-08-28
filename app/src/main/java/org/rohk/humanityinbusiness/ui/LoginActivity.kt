@@ -3,7 +3,8 @@ package org.rohk.humanityinbusiness.ui
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
@@ -22,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         etEmail.setText(PreferenceUtils().getLoginEmail(this))
-
+        etPassword.setText("1234")
         btnSignIn.setOnClickListener {
             if (!validateFields()) {
                 login()
@@ -33,6 +34,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
+        layoutContainer.visibility = View.GONE
+        animationView.visibility = View.VISIBLE
+
         val request = RequestLoginModel(etEmail.text.toString(), etPassword.text.toString())
 
         ServiceAPI().login(
@@ -59,6 +63,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
+                    hideLoadingAnimation()
                     showDialog("Oops, login failed!")
                 }
             })
@@ -67,7 +72,9 @@ class LoginActivity : AppCompatActivity() {
     private fun showDialog(message: String) {
         AlertDialog.Builder(this)
             .setTitle(message)
-            .setNeutralButton("OK") { _, _ -> }
+            .setNeutralButton("OK") { _, _ ->
+                hideLoadingAnimation()
+            }
             .create()
             .show()
     }
@@ -75,4 +82,9 @@ class LoginActivity : AppCompatActivity() {
     private fun validateFields(): Boolean =
         (etPassword.text.isNullOrBlank() ||
                 etEmail.text.isNullOrBlank())
+
+    private fun hideLoadingAnimation() {
+        animationView.visibility = View.GONE
+        layoutContainer.visibility = View.VISIBLE
+    }
 }

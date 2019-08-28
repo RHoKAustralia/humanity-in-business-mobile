@@ -137,4 +137,16 @@ class ServiceAPI {
         call.enqueue(callback)
     }
 
+    fun getAllEvents(
+        communityId: Int,
+        callback: Callback<List<EventModel>>
+    ) {
+        val call: Call<List<EventModel>> = getService().getAllEvents(communityId)
+        call.enqueue(callback)
+    }
+
+    fun getCommunityProfile(communityId: Int, callback: Callback<CommunityModel>) {
+        val call: Call<CommunityModel> = getService().getCommunityById(communityId)
+        call.enqueue(callback)
+    }
 }

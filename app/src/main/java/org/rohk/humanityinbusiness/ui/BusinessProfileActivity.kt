@@ -1,8 +1,8 @@
 package org.rohk.humanityinbusiness.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_business_profile.*
 import kotlinx.android.synthetic.main.activity_business_profile.expandedImage
@@ -120,7 +120,11 @@ class BusinessProfileActivity : AppCompatActivity() {
     private fun setHorizontalImageList(items: List<String>) {
         val adapter = ImageAdapter(this)
         adapter.setList(items)
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            this,
+            androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+            false
+        )
         list.layoutManager = layoutManager
         list.adapter = adapter
 

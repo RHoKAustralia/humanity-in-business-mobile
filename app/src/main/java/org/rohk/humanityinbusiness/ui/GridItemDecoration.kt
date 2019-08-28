@@ -1,19 +1,19 @@
 package org.rohk.humanityinbusiness.ui
 
 import android.graphics.Rect
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
-class GridItemDecoration(gridSpacingPx: Int, gridSize: Int) : RecyclerView.ItemDecoration() {
+class GridItemDecoration(gridSpacingPx: Int, gridSize: Int) : androidx.recyclerview.widget.RecyclerView.ItemDecoration() {
     private var mSizeGridSpacingPx: Int = gridSpacingPx
     private var mGridSize: Int = gridSize
 
     private var mNeedLeftSpacing = false
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
         val frameWidth = ((parent.width - mSizeGridSpacingPx.toFloat() * (mGridSize - 1)) / mGridSize).toInt()
         val padding = parent.width / mGridSize - frameWidth
-        val itemPosition = (view.getLayoutParams() as RecyclerView.LayoutParams).viewAdapterPosition
+        val itemPosition = (view.getLayoutParams() as androidx.recyclerview.widget.RecyclerView.LayoutParams).viewAdapterPosition
         if (itemPosition < mGridSize) {
             outRect.top = 0
         } else {

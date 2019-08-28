@@ -2,7 +2,8 @@ package org.rohk.humanityinbusiness.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_register.*
@@ -54,12 +55,16 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun register() {
         if(!validateFields()) {
+            layoutContainer.visibility = View.GONE
+            animationView.visibility = View.VISIBLE
+
             val request = RequestRegisterModel(
                 etFullname.text.toString(),
                 etPassword.text.toString(),
                 etEmail.text.toString(),
                 companies[companySpinner.selectedItemPosition].id,
-                etTitle.text.toString()
+                etTitle.text.toString(),
+                arrayOf() // TODO add multi skills selection spinner
             )
 
             ServiceAPI().register(
@@ -72,13 +77,17 @@ class RegisterActivity : AppCompatActivity() {
                         response.body()?.id?.let {
                             PreferenceUtils().setUserId(this@RegisterActivity, it)
                             PreferenceUtils().setLoginEmail(this@RegisterActivity, etEmail.text.toString())
-                            startActivity(Intent(applicationContext, GoalsSelectionActivity::class.java))
+                            startActivity(Intent(applicationContext, RegisterSuccessActivity::class.java))
                             finish()
-                        } ?: Toast.makeText(applicationContext, "Oops, registration failed!", Toast.LENGTH_LONG).show()
+                        } ?:
+                        Toast.makeText(applicationContext, "Oops, registration failed!", Toast.LENGTH_LONG).show()
+
+                        hideLoadingAnimation()
                     }
 
                     override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
                         Toast.makeText(applicationContext, "Oops, registration failed!", Toast.LENGTH_LONG).show()
+                        hideLoadingAnimation()
                     }
                 })
         } else {
@@ -92,4 +101,8 @@ class RegisterActivity : AppCompatActivity() {
                 etEmail.text.isNullOrBlank() ||
                 etTitle.text.isNullOrBlank())
 
+    private fun hideLoadingAnimation() {
+        animationView.visibility = View.GONE
+        layoutContainer.visibility = View.VISIBLE
+    }
 }

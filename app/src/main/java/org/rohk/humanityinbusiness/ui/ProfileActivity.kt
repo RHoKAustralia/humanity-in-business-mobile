@@ -2,11 +2,12 @@ package org.rohk.humanityinbusiness.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
@@ -30,16 +31,16 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        tvCompanyTitle.setOnClickListener {
-            val intent = Intent(this, BusinessProfileActivity::class.java)
-            intent.putExtra("ID", profileModel.company_id)
-            startActivity(intent)
-        }
+//        tvCompanyTitle.setOnClickListener {
+//            val intent = Intent(this, BusinessProfileActivity::class.java)
+//            intent.putExtra("ID", profileModel.company_id)
+//            startActivity(intent)
+//        }
 
         getProfile()
-        setMySDGs()
-        getUpcomingChallenges()
-        getCompletedChallenges()
+        //setMySDGs()
+        //getUpcomingChallenges()
+        //getCompletedChallenges()
     }
 
     private fun getProfile() {
@@ -53,10 +54,12 @@ class ProfileActivity : AppCompatActivity() {
                     response.body()?.let {
                         setProfile(it)
                     } ?: Toast.makeText(applicationContext, "Oops, could not fetch SDGs!", Toast.LENGTH_LONG).show()
+                    hideLoadingAnimation()
                 }
 
                 override fun onFailure(call: Call<ProfileModel>, t: Throwable) {
                     Toast.makeText(applicationContext, "Oops, could not fetch SDGs!", Toast.LENGTH_LONG).show()
+                    hideLoadingAnimation()
                 }
             })
     }
@@ -131,9 +134,23 @@ class ProfileActivity : AppCompatActivity() {
         tvPoints.text = "${profileModel.total_points} points"
         tvCompanyTitle.text = profileModel.title
 
-        GlideApp.with(this)
-            .load(profileModel.image_url)
-            .into(expandedImage)
+//        GlideApp.with(this)
+//            .load(profileModel.image_url)
+//            .into(expandedImage)
+
+        expandedImage.setOnClickListener{
+            selectAvatar()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        expandedImage.setImageDrawable(ContextCompat.getDrawable(this, PreferenceUtils().getSelectedAvatar(this)))
+
+    }
+
+    private fun selectAvatar() {
+        startActivity(Intent(applicationContext, AvatarSelectionActivity::class.java))
     }
 
     private fun setMySDGs() {
@@ -179,7 +196,11 @@ class ProfileActivity : AppCompatActivity() {
     private fun setHorizontalImageList(items: List<String>) {
         val adapter = ImageAdapter(this)
         adapter.setList(items)
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            this,
+            androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+            false
+        )
         list.layoutManager = layoutManager
         list.adapter = adapter
 
@@ -188,5 +209,10 @@ class ProfileActivity : AppCompatActivity() {
     private fun hideMyFights() {
         tvMyFights.visibility = View.GONE
         list.visibility = View.GONE
+    }
+
+    private fun hideLoadingAnimation() {
+        animationView.visibility = View.GONE
+        layoutContainer.visibility = View.VISIBLE
     }
 }

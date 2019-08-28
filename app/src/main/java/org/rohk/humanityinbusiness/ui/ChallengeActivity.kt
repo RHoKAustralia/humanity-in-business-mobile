@@ -2,7 +2,8 @@ package org.rohk.humanityinbusiness.ui
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Window
 import android.widget.Button
 import android.widget.Toast
@@ -47,6 +48,7 @@ class ChallengeActivity : AppCompatActivity() {
         val yesBtn = dialog.findViewById(R.id.btnYes) as Button
         yesBtn.setOnClickListener {
             addChallenge(dialog)
+            dialog.dismiss()
         }
         dialog.show()
     }
@@ -62,12 +64,14 @@ class ChallengeActivity : AppCompatActivity() {
                             setChallenge()
                         }
                     } else {
-                        Toast.makeText(applicationContext, "Oops, could not fetch challenge!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Oops, could not fetch event!", Toast.LENGTH_LONG).show()
                     }
+                    hideLoadingAnimation()
                 }
 
                 override fun onFailure(call: Call<ChallengeModel>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Oops, could not fetch challenge!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Oops, could not fetch event!", Toast.LENGTH_LONG).show()
+                    hideLoadingAnimation()
                 }
             })
     }
@@ -100,13 +104,18 @@ class ChallengeActivity : AppCompatActivity() {
                     if (response.code() == HttpURLConnection.HTTP_OK) {
                         finish()
                     } else {
-                        Toast.makeText(applicationContext, "Oops, could not join challenge!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Oops, could not join event!", Toast.LENGTH_LONG).show()
                     }
                 }
 
                 override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Oops, could not join challenge!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Oops, could not join event!", Toast.LENGTH_LONG).show()
                 }
             })
+    }
+
+    private fun hideLoadingAnimation() {
+        animationView.visibility = View.GONE
+        layoutContainer.visibility = View.VISIBLE
     }
 }

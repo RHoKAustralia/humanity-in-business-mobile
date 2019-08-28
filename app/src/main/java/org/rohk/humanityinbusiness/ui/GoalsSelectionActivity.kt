@@ -2,8 +2,9 @@ package org.rohk.humanityinbusiness.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_goals_selection.*
 import org.rohk.humanityinbusiness.R
@@ -33,7 +34,7 @@ class GoalsSelectionActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        recyclerViewGoalsSelection.layoutManager = GridLayoutManager(this, 3)
+        recyclerViewGoalsSelection.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 3)
         recyclerViewGoalsSelection.addItemDecoration(GridItemDecoration(10, 3))
 
         listAdapter = GoalsSelectionAdapter(this, ::selectionListener)
@@ -69,6 +70,9 @@ class GoalsSelectionActivity : AppCompatActivity() {
     }
 
     private fun sendSelectedGoals() {
+        layoutContainer.visibility = View.GONE
+        animationView.visibility = View.VISIBLE
+
         var selectedId = mutableListOf<String>()
         sdgList.filter { it.isSelected }.forEach { selectedId.add(it.id.toString()) }
         val request = RequestSDGModel(selectedId.toTypedArray())
@@ -87,10 +91,14 @@ class GoalsSelectionActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(applicationContext, "Oops, selection failed!", Toast.LENGTH_LONG).show()
                     }
+                    animationView.visibility = View.GONE
+                    layoutContainer.visibility = View.VISIBLE
                 }
 
                 override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
                     Toast.makeText(applicationContext, "Oops, selection failed!", Toast.LENGTH_LONG).show()
+                    animationView.visibility = View.GONE
+                    layoutContainer.visibility = View.VISIBLE
                 }
             })
     }

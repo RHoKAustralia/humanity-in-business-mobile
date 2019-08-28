@@ -20,8 +20,9 @@ interface APIServiceInterface {
     @GET("company/{companyId}")
     fun getCompanyById(@Path("companyId") companyId: String): Call<CompanyModel>
 
+    @Headers("Content-Type: application/json")
     @POST("company")
-    fun createNewCompany(): Call<ResponseModel> // TODO need req / res model
+    fun createNewCompany(@Body request: RequestCompanyModel): Call<RegisterResponseModel> // TODO where is this going to be used
 
     @GET("leaderboard/company/{companyId}")
     fun getCompanyLeaderBoard(@Path("companyId") companyId: String): Call<List<LeaderBoardModel>>
@@ -56,17 +57,32 @@ interface APIServiceInterface {
     @POST("/addChallengeToUser")
     fun addChallengeToUser(@Body request: RequestAddChallengeModel): Call<RegisterResponseModel>
 
-    @GET("challenge/{challengeId}")
+    @GET("event/{challengeId}")
     fun getChallenge(@Path("challengeId") challengeId: Int): Call<ChallengeModel>
 
     @GET("challenges/upcoming/{userId}")
     fun getUpcomingChallengesByUser(@Path("userId") userId: String): Call<List<ChallengeModel>>
 
     @GET("challenges/completed/{userId}")
-    fun getCompletedChallenges(@Path("userId") userId: String): Call<List<ChallengeModel>> // TODO null response
+    fun getCompletedChallenges(@Path("userId") userId: String): Call<List<ChallengeModel>>
 
     // Skills Endpoint
 
     @GET("skills")
     fun getAllSkills(): Call<ResponseModel> // TODO add in register screen
+
+    // Communuties Endpoint
+
+    @GET("communities")
+    fun getAllCommunuties(): Call<List<CommunityModel>>
+
+    @GET("communities/{communityId}")
+    fun getCommunityById(@Path("communityId") communityId: Int): Call<CommunityModel>
+
+
+    // Events Endpoint
+
+    @GET("communities/{communityId}/events")
+    fun getAllEvents(@Path("communityId") communityId: Int): Call<List<EventModel>>
+
 }
