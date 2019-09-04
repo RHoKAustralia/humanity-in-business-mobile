@@ -57,6 +57,10 @@
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
+                android:name=".ui.TeamActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
                 android:name=".ui.RegisterActivity"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>

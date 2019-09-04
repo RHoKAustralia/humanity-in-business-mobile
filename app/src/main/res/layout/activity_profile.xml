@@ -79,7 +79,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Upcoming challenge"
+                        android:text="Upcoming event"
                         android:textSize="16dp"
                         android:textStyle="bold"
                         android:layout_marginBottom="12dp"/>
@@ -96,40 +96,40 @@
                         android:scaleType="centerCrop"/>
             </LinearLayout>
 
-            <TextView
-                    android:id="@+id/tvMyFights"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="My fights"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginStart="12dp"/>
+<!--            <TextView-->
+<!--                    android:id="@+id/tvMyFights"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="My fights"-->
+<!--                    android:textSize="16dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginBottom="12dp"-->
+<!--                    android:layout_marginStart="12dp"/>-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginStart="12dp"
-                    android:id="@+id/list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:layout_marginStart="12dp"-->
+<!--                    android:id="@+id/list"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-            </androidx.recyclerview.widget.RecyclerView>
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Past activities"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginStart="12dp"/>
+<!--            <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Past activities"-->
+<!--                    android:textSize="16dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:layout_marginBottom="12dp"-->
+<!--                    android:layout_marginStart="12dp"/>-->
 
-            <ListView
-                    android:id="@+id/listPastActivities"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginStart="12dp"/>
+<!--            <ListView-->
+<!--                    android:id="@+id/listPastActivities"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="12dp"-->
+<!--                    android:layout_marginStart="12dp"/>-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

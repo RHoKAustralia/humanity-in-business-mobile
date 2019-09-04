@@ -85,4 +85,11 @@ interface APIServiceInterface {
     @GET("communities/{communityId}/events")
     fun getAllEvents(@Path("communityId") communityId: Int): Call<List<EventModel>>
 
+    @GET("events/{eventId}/teams")
+    fun getTeamsByEventId(@Path("eventId") communityId: Int): Call<List<TeamModel>>
+
+    @POST("/teams/{teamId}/members ")
+    fun joinTeam(@Path("teamId") teamId: Int, @Body request: RequestJoinTeamModel): Call<RegisterResponseModel>
+
+
 }

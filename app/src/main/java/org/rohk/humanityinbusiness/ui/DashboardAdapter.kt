@@ -7,16 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_layout.view.*
 import org.rohk.humanityinbusiness.R
-import org.rohk.humanityinbusiness.ui.viewmodel.EventModel
+import org.rohk.humanityinbusiness.ui.viewmodel.TeamModel
 import org.rohk.humanityinbusiness.utils.DateUtils
 import org.rohk.humanityinbusiness.utils.GlideApp
 
-class DashboardAdapter(mainContext: Context, private val clickListener: (EventModel) -> Unit) :
+class DashboardAdapter(mainContext: Context, private val clickListener: (TeamModel) -> Unit) :
     androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     private val context = mainContext
 
-    private var list = listOf<EventModel>()
+    private var list = listOf<TeamModel>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val v = LayoutInflater.from(viewGroup.context)
@@ -24,7 +24,7 @@ class DashboardAdapter(mainContext: Context, private val clickListener: (EventMo
         return ViewHolder(v, clickListener)
     }
 
-    fun setList(listChallenges: List<EventModel>) {
+    fun setList(listChallenges: List<TeamModel>) {
         this.list = listChallenges
         notifyDataSetChanged()
     }
@@ -40,19 +40,24 @@ class DashboardAdapter(mainContext: Context, private val clickListener: (EventMo
 
     class ViewHolder(
         itemView: View,
-        private val clickListener: (EventModel) -> Unit
+        private val clickListener: (TeamModel) -> Unit
     ) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-        fun bindView(event: EventModel, context: Context) {
-            itemView.tvItemTitle.text = event.name
-            itemView.tvItemDate.text = DateUtils().getFormattedDate(event.date)
-            itemView.tvItemPoints.text = "${event.hours} hours"
+        fun bindView(team: TeamModel, context: Context) {
+//            itemView.tvItemTitle.text = event.name
+//            itemView.tvItemDate.text = DateUtils().getFormattedDate(event.date)
+//            itemView.tvItemPoints.text = "${event.hours} hours"
+            // TODO null checks
+
+            itemView.tvItemTitle.text = team.project.name
+            itemView.tvItemDate.text = team.project.owner
+            itemView.tvItemPoints.text = team.project.description
 
             GlideApp.with(context)
-                .load(event.image_url)
+                .load(team.project.image_url)
                 .into(itemView.imgItem)
 
             itemView.setOnClickListener {
-                clickListener(event)
+                clickListener(team)
             }
         }
 

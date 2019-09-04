@@ -149,4 +149,21 @@ class ServiceAPI {
         val call: Call<CommunityModel> = getService().getCommunityById(communityId)
         call.enqueue(callback)
     }
+
+    fun getTeamsByEventId(
+        eventId: Int,
+        callback: Callback<List<TeamModel>>
+    ) {
+        val call: Call<List<TeamModel>> = getService().getTeamsByEventId(eventId)
+        call.enqueue(callback)
+    }
+
+    fun joinTeam(
+        teamId: Int,
+        request: RequestJoinTeamModel,
+        callback: Callback<RegisterResponseModel>
+    ) {
+        val call: Call<RegisterResponseModel> = getService().joinTeam(teamId,request)
+        call.enqueue(callback)
+    }
 }
