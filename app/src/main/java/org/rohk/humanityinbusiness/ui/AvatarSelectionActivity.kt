@@ -1,5 +1,6 @@
 package org.rohk.humanityinbusiness.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,7 +18,8 @@ class AvatarSelectionActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        recyclerViewAvatarSelection.layoutManager = GridLayoutManager(this, 3) as RecyclerView.LayoutManager?
+        recyclerViewAvatarSelection.layoutManager =
+            GridLayoutManager(this, 3) as RecyclerView.LayoutManager?
 
         //This will for default android divider
         recyclerViewAvatarSelection.addItemDecoration(GridItemDecoration(10, 3))
@@ -27,8 +29,10 @@ class AvatarSelectionActivity : AppCompatActivity() {
         listAdapter.setList(getAvatars())
     }
 
-    private fun saveSelectedAvatar(avatar : Int) {
+    private fun saveSelectedAvatar(avatar: Int) {
         PreferenceUtils().setSelectedAvatar(this, avatar)
+        startActivity(Intent(applicationContext, MainActivity::class.java))
+
         finish()
     }
 

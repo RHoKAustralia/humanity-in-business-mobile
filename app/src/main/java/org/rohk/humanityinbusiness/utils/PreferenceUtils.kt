@@ -11,6 +11,8 @@ class PreferenceUtils {
     val PREFERENCES_SDG_GOALS = "sdg_goals"
     val PREFERENCES_SDG_IDS = "sdg_ids"
     val PREFERENCES_AVATAR = "avatar_drawable"
+    val PREFERENCES_COMMUNITY_ID = "community_id"
+    val PREFERENCES_EVENT_ID = "event_id"
 
     fun getLoginEmail(context: Context): String? {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
@@ -69,6 +71,30 @@ class PreferenceUtils {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
         val preferencesEditor = preferences.edit()
         preferencesEditor.putInt(PREFERENCES_AVATAR, avatarDrawable)
+        preferencesEditor.apply()
+    }
+
+    fun getSelectedCommunityId(context: Context): String {
+        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
+        return preferences.getString(PREFERENCES_COMMUNITY_ID, "1")
+    }
+
+    fun setSelectedCommunityId(context: Context, communityId: String) {
+        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
+        val preferencesEditor = preferences.edit()
+        preferencesEditor.putString(PREFERENCES_COMMUNITY_ID, communityId)
+        preferencesEditor.apply()
+    }
+
+    fun getSelectedEventId(context: Context): String {
+        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
+        return preferences.getString(PREFERENCES_EVENT_ID, "1")
+    }
+
+    fun setSelectedEventId(context: Context, eventId: String) {
+        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
+        val preferencesEditor = preferences.edit()
+        preferencesEditor.putString(PREFERENCES_EVENT_ID, eventId)
         preferencesEditor.apply()
     }
 }

@@ -18,12 +18,12 @@ class SplashActivity : AppCompatActivity() {
             finish()
         } else
             Handler().postDelayed({
-                if (!preferenceUtils.isGoalsSelected(this)) {
-                    startActivity(Intent(this, GoalsSelectionActivity::class.java))
-                } else {
+//                if (!preferenceUtils.isGoalsSelected(this)) {
+//                    startActivity(Intent(this, CommunitySelectionActivity::class.java))
+//                } else {
                     startActivity(Intent(this, LoginActivity::class.java))
 
-                }
+//                }
                 finish()
             }, 1000)
     }

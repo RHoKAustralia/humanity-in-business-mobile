@@ -138,7 +138,7 @@ class ServiceAPI {
     }
 
     fun getAllEvents(
-        communityId: Int,
+        communityId: String,
         callback: Callback<List<EventModel>>
     ) {
         val call: Call<List<EventModel>> = getService().getAllEvents(communityId)
@@ -164,6 +164,21 @@ class ServiceAPI {
         callback: Callback<RegisterResponseModel>
     ) {
         val call: Call<RegisterResponseModel> = getService().joinTeam(teamId,request)
+        call.enqueue(callback)
+    }
+
+    fun getAllCommunities(
+        callback: Callback<List<CommunityModel>>
+    ) {
+        val call: Call<List<CommunityModel>> = getService().getAllCommunuties()
+        call.enqueue(callback)
+    }
+
+    fun getLeaderboard(
+        communityId: String,
+        callback: Callback<List<UserLeaderBoardModel>>
+    ) {
+        val call: Call<List<UserLeaderBoardModel>> = getService().getLeaderboard(communityId)
         call.enqueue(callback)
     }
 }

@@ -1,6 +1,7 @@
 package org.rohk.humanityinbusiness.ui
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.Window
@@ -8,6 +9,14 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_challenge.*
+import kotlinx.android.synthetic.main.activity_challenge.animationView
+import kotlinx.android.synthetic.main.activity_challenge.imgChallenge
+import kotlinx.android.synthetic.main.activity_challenge.layoutContainer
+import kotlinx.android.synthetic.main.activity_challenge.tvDate
+import kotlinx.android.synthetic.main.activity_challenge.tvDesc
+import kotlinx.android.synthetic.main.activity_challenge.tvSubTitle
+import kotlinx.android.synthetic.main.activity_challenge.tvTitle
+import kotlinx.android.synthetic.main.activity_event.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
 import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
@@ -61,7 +70,16 @@ class EventActivity : AppCompatActivity() {
 
         hideLoadingAnimation()
 
+        btnNext.setOnClickListener {
+            selectAvatar()
+        }
+
         // todo connect to community
+    }
+
+    private fun selectAvatar() {
+        startActivity(Intent(applicationContext, AvatarSelectionActivity::class.java))
+        finish()
     }
 
     private fun hideLoadingAnimation() {

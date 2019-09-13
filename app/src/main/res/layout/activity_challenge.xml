@@ -120,7 +120,7 @@
                     android:id="@+id/btnJoin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Yes, Join me in!"
+                    android:text="Yes, Count me in!"
                     android:background="@color/colorPrimaryDark"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="30dp"

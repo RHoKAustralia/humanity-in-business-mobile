@@ -33,19 +33,16 @@ class OnboardingActivity : AppCompatActivity() {
 
     private fun getList() = listOf<OnboardingPage>(
         OnboardingPage(
-            "Welcome to HIB!",
-            "Where we link professionals to hello with causes using their skill set to make sure you volunteer your time in the most powerful and productive way to get the most out of your volunteering experience and benefit our society.",
-            ContextCompat.getDrawable(this, R.drawable.ic_welcome)
-        ),
-        OnboardingPage(
-            "Speaking of Time...",
-            "We really value your time and want to make sure you are only contributing to a cause that matches your available time. To do this we have created causes that you can choose which will best fit your time frame. ",
-            ContextCompat.getDrawable(this, R.drawable.ic_time)
-        ),
-        OnboardingPage(
-            "We Appreciate You.",
-            "While the goal of HIB is all about helping people in need and causes we want to make sure you’re acknowledged. You can collect trophies along the way so you and the rest of the community can see the positive change you have contributed to.",
+            "Better Professional Awards!",
+            "Inspire, recognise and reward professionals who do good.",
             ContextCompat.getDrawable(this, R.drawable.ic_appreciate)
+        ),
+        OnboardingPage(
+            "Choose your community which matches your skills",
+            "Choose which Better Team Day you are a part of\n" +
+                    "Choose the project you have worked on\n" +
+                    "Be recognised as a Better Professional! ",
+            ContextCompat.getDrawable(this, R.drawable.ic_fight)
         )
     )
 

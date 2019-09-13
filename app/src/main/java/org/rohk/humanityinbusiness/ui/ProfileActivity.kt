@@ -39,7 +39,7 @@ class ProfileActivity : AppCompatActivity() {
 //        }
 
         getProfile()
-        getAllEvents(1)
+        getAllEvents("1")
         //setMySDGs()
         //getUpcomingChallenges()
         //getCompletedChallenges()
@@ -133,7 +133,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun setProfile(profileModel: ProfileModel) {
         this.profileModel = profileModel
         tvName.text = profileModel.full_name
-        tvPoints.text = "1412 points"
+        tvPoints.text = "16 hours"
 //        tvPoints.text = "${profileModel.total_points} points"
         tvCompanyTitle.text = profileModel.title
 
@@ -141,9 +141,9 @@ class ProfileActivity : AppCompatActivity() {
 //            .load(profileModel.image_url)
 //            .into(expandedImage)
 
-        expandedImage.setOnClickListener{
-            selectAvatar()
-        }
+//        expandedImage.setOnClickListener{
+//            selectAvatar()
+//        }
     }
 
         private fun selectionListener(selectedEvent: EventModel) {
@@ -232,7 +232,7 @@ class ProfileActivity : AppCompatActivity() {
         layoutContainer.visibility = View.VISIBLE
     }
 
-        private fun getAllEvents(communityId : Int) {
+        private fun getAllEvents(communityId : String) {
         ServiceAPI().getAllEvents(communityId,
             object : Callback<List<EventModel>> {
                 override fun onResponse(
@@ -260,9 +260,9 @@ class ProfileActivity : AppCompatActivity() {
                 .load(eventModel.image_url)
                 .into(imgUpcomingChallenge)
 
-            linUpcomingChallenge.setOnClickListener{
-                selectionListener(eventModel)
-            }
+//            linUpcomingChallenge.setOnClickListener{
+//                selectionListener(eventModel)
+//            }
         } else {
             linUpcomingChallenge.visibility = View.GONE
         }

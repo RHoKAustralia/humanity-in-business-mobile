@@ -52,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+        expandedImage.setOnClickListener {
+            startActivity(Intent(this, LeaderboardActivity::class.java))
+        }
 
         val collapsingToolbarLayout = findViewById(R.id.toolbar_layout) as CollapsingToolbarLayout
         val appBarLayout = findViewById(R.id.app_bar) as AppBarLayout
@@ -99,7 +102,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setProfile(profileModel: ProfileModel) {
         tvName.text = profileModel.full_name
-        tvPoints.text = "${profileModel.total_points} hours"
+//        tvPoints.text = "${profileModel.total_points} hours"
+        tvPoints.text = "16 Hours"
     }
 
     private fun selectionListener(selectedTeam: TeamModel) {
