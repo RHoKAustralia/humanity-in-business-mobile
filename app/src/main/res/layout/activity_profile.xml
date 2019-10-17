@@ -50,14 +50,24 @@
                         android:layout_toEndOf="@id/expandedImage"/>
 
                 <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:layout_toEndOf="@id/expandedImage"
+                        android:layout_below="@id/tvName"/>
+
+                <TextView
                         android:id="@+id/tvCompanyTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@android:color/black"
                         android:layout_toEndOf="@id/expandedImage"
-                        android:layout_below="@id/tvName"/>
+                        android:layout_below="@id/tvTitle"/>
 
                 <TextView
                         android:id="@+id/tvPoints"
@@ -79,7 +89,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Upcoming event"
+                        android:text="Your Project"
                         android:textSize="16dp"
                         android:textStyle="bold"
                         android:layout_marginBottom="12dp"/>

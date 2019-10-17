@@ -39,11 +39,11 @@
                 android:id="@+id/tvSubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="We'll use these to show you cool stuff."
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"
-                android:layout_below="@id/tvTitle"/>
+                android:layout_below="@id/tvTitle"
+                android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCommunitySelection"

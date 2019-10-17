@@ -50,7 +50,8 @@
                         android:textColor="@android:color/black"
                         android:textStyle="bold"
                         android:layout_marginBottom="5dp"
-                        android:layout_toEndOf="@id/expandedImage"/>
+                        android:layout_toEndOf="@id/expandedImage"
+                        android:visibility="gone"/>
 
                 <TextView
                         android:id="@+id/tvSubTitle"

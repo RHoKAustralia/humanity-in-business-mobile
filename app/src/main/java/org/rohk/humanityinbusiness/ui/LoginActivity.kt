@@ -47,13 +47,18 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<RegisterResponseModel>
                 ) {
                     if (response.code() == HttpURLConnection.HTTP_OK) {
+                        val preferenceUtils = PreferenceUtils()
                         response.body()?.let {
-                            PreferenceUtils().setUserId(this@LoginActivity, it.id)
+                            preferenceUtils.setUserId(this@LoginActivity, it.id)
                         }
 
-                        PreferenceUtils().setLoginEmail(this@LoginActivity, etEmail.text.toString())
+                        preferenceUtils.setLoginEmail(this@LoginActivity, etEmail.text.toString())
 
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                        if (preferenceUtils.getSelectedCommunityId(this@LoginActivity).equals("0")) {
+                            startActivity(Intent(this@LoginActivity, CommunitySelectionActivity::class.java))
+                        } else {
+                            startActivity(Intent(applicationContext, MainActivity::class.java))
+                        }
                         finish()
                     } else if (response.code() == HttpURLConnection.HTTP_UNAUTHORIZED) {
                         showDialog("Oops, email or password is incorrect!")

@@ -5,20 +5,17 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_challenge.*
+import kotlinx.android.synthetic.main.activity_team.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
 import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
-import org.rohk.humanityinbusiness.http.model.RequestAddChallengeModel
 import org.rohk.humanityinbusiness.http.model.RequestJoinTeamModel
 import org.rohk.humanityinbusiness.utils.GlideApp
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.HttpURLConnection
 
 class TeamActivity : AppCompatActivity() {
 
@@ -26,7 +23,7 @@ class TeamActivity : AppCompatActivity() {
     private var projectId: Int = 0
     private var name: String = ""
     private var description: String = ""
-    private var owner: String = ""
+    private var owner: String? = ""
     private var image_url: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +34,7 @@ class TeamActivity : AppCompatActivity() {
         projectId = intent.getIntExtra("project_id", 0)
         name = intent.getStringExtra("name")
         description = intent.getStringExtra("description")
-        owner = intent.getStringExtra("owner")
+        owner = intent.getStringExtra("owner") ?: ""
         image_url = intent.getStringExtra("image_url")
 
         setTeam()
@@ -82,17 +79,15 @@ class TeamActivity : AppCompatActivity() {
             teamId,
             request,
             object : Callback<RegisterResponseModel> {
-                override fun onResponse(call: Call<RegisterResponseModel>, response: Response<RegisterResponseModel>) {
+                override fun onResponse(
+                    call: Call<RegisterResponseModel>,
+                    response: Response<RegisterResponseModel>
+                ) {
                     dialog.dismiss()
-                    //if (response.code() == HttpURLConnection.HTTP_CREATED) {
-                        finish()
-//                    } else {
-//                        Toast.makeText(applicationContext, "Oops, could not join team!", Toast.LENGTH_LONG).show()
-//                    }
+                    finish()
                 }
 
                 override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
-//                    Toast.makeText(applicationContext, "Oops, could not join team!", Toast.LENGTH_LONG).show()
                     finish()
                 }
             })

@@ -2,59 +2,30 @@ package org.rohk.humanityinbusiness.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import org.rohk.humanityinbusiness.http.ServiceAPI
 import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
 import org.rohk.humanityinbusiness.http.model.RequestRegisterModel
-import org.rohk.humanityinbusiness.ui.viewmodel.CompanyModel
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
-    var spinnerArray = ArrayList<String>()
-    var companies: List<CompanyModel> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(org.rohk.humanityinbusiness.R.layout.activity_register)
-        getAllCompanies()
+        setContentView(org.rohk.humanityinbusiness.R.layout.activity_register) // TODO add image url avatar
         btnRegister.setOnClickListener {
             register()
         }
     }
 
-    private fun getAllCompanies() {
-        ServiceAPI().getAllCompanies(object : Callback<List<CompanyModel>> {
-            override fun onResponse(call: Call<List<CompanyModel>>, response: Response<List<CompanyModel>>) {
-
-                companies = response.body() ?: listOf()
-                companies.forEach { company ->
-                    company.name?.let { companyName -> spinnerArray.add(companyName) }
-                }
-
-                val adapter = ArrayAdapter(
-                    this@RegisterActivity, android.R.layout.simple_spinner_item, spinnerArray
-                )
-
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                companySpinner.adapter = adapter
-
-                response.body()
-            }
-
-            override fun onFailure(call: Call<List<CompanyModel>>, t: Throwable) {
-                Toast.makeText(applicationContext, "Oops, could not fetch companies!", Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-
     private fun register() {
-        if(!validateFields()) {
+        if (!validateFields()) {
             layoutContainer.visibility = View.GONE
             animationView.visibility = View.VISIBLE
 
@@ -62,9 +33,8 @@ class RegisterActivity : AppCompatActivity() {
                 etFullname.text.toString(),
                 etPassword.text.toString(),
                 etEmail.text.toString(),
-                companies[companySpinner.selectedItemPosition].id,
                 etTitle.text.toString(),
-                arrayOf() // TODO add multi skills selection spinner
+                arrayOf() // skills
             )
 
             ServiceAPI().register(
@@ -76,22 +46,38 @@ class RegisterActivity : AppCompatActivity() {
                     ) {
                         response.body()?.id?.let {
                             PreferenceUtils().setUserId(this@RegisterActivity, it)
-                            PreferenceUtils().setLoginEmail(this@RegisterActivity, etEmail.text.toString())
-                            startActivity(Intent(applicationContext, RegisterSuccessActivity::class.java))
+                            PreferenceUtils().setLoginEmail(
+                                this@RegisterActivity,
+                                etEmail.text.toString()
+                            )
+                            startActivity(
+                                Intent(
+                                    applicationContext,
+                                    RegisterSuccessActivity::class.java
+                                )
+                            )
                             finish()
-                        } ?:
-                        Toast.makeText(applicationContext, "Oops, registration failed!", Toast.LENGTH_LONG).show()
+                        } ?: Toast.makeText(
+                            applicationContext,
+                            "Oops, registration failed!",
+                            Toast.LENGTH_LONG
+                        ).show()
 
                         hideLoadingAnimation()
                     }
 
                     override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
-                        Toast.makeText(applicationContext, "Oops, registration failed!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            "Oops, registration failed!",
+                            Toast.LENGTH_LONG
+                        ).show()
                         hideLoadingAnimation()
                     }
                 })
         } else {
-            Toast.makeText(applicationContext, "Please enter all details!", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Please enter all details!", Toast.LENGTH_LONG)
+                .show()
         }
     }
 

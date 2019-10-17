@@ -33,14 +33,14 @@ class OnboardingActivity : AppCompatActivity() {
 
     private fun getList() = listOf<OnboardingPage>(
         OnboardingPage(
-            "Better Professional Awards!",
-            "Inspire, recognise and reward professionals who do good.",
+            "Join Business as a Force for Good!",
+            "Build your Social CV\n\n" + "Inspire Others to Do Good",
             ContextCompat.getDrawable(this, R.drawable.ic_appreciate)
         ),
         OnboardingPage(
             "Choose your community which matches your skills",
-            "Choose which Better Team Day you are a part of\n" +
-                    "Choose the project you have worked on\n" +
+            "Choose which Better Team Day you are a part of\n\n" +
+                    "Choose the project you have worked on\n\n" +
                     "Be recognised as a Better Professional! ",
             ContextCompat.getDrawable(this, R.drawable.ic_fight)
         )

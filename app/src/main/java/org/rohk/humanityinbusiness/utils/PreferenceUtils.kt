@@ -8,7 +8,6 @@ class PreferenceUtils {
 
     val PREFERENCES_EMAIL = "login_email"
     val PREFERENCES_USERID = "user_id"
-    val PREFERENCES_SDG_GOALS = "sdg_goals"
     val PREFERENCES_SDG_IDS = "sdg_ids"
     val PREFERENCES_AVATAR = "avatar_drawable"
     val PREFERENCES_COMMUNITY_ID = "community_id"
@@ -38,18 +37,6 @@ class PreferenceUtils {
         preferencesEditor.apply()
     }
 
-    fun isGoalsSelected(context: Context): Boolean {
-        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        return preferences.getBoolean(PREFERENCES_SDG_GOALS, false)
-    }
-
-    fun setGoalsSelectionStatus(context: Context, goalsStatus: Boolean) {
-        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(PREFERENCES_SDG_GOALS, goalsStatus)
-        preferencesEditor.apply()
-    }
-
     fun getSelectedSDGIds(context: Context): String {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
         return preferences.getString(PREFERENCES_SDG_IDS, "")
@@ -62,21 +49,21 @@ class PreferenceUtils {
         preferencesEditor.apply()
     }
 
-    fun getSelectedAvatar(context: Context): Int {
+    fun getSelectedAvatar(context: Context): String {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        return preferences.getInt(PREFERENCES_AVATAR, R.drawable.avatar0)
+        return preferences.getString(PREFERENCES_AVATAR, "")
     }
 
-    fun setSelectedAvatar(context: Context, avatarDrawable: Int) {
+    fun setSelectedAvatar(context: Context, avatarURL: String) {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
         val preferencesEditor = preferences.edit()
-        preferencesEditor.putInt(PREFERENCES_AVATAR, avatarDrawable)
+        preferencesEditor.putString(PREFERENCES_AVATAR, avatarURL)
         preferencesEditor.apply()
     }
 
     fun getSelectedCommunityId(context: Context): String {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        return preferences.getString(PREFERENCES_COMMUNITY_ID, "1")
+        return preferences.getString(PREFERENCES_COMMUNITY_ID, "0")
     }
 
     fun setSelectedCommunityId(context: Context, communityId: String) {

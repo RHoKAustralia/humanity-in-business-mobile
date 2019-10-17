@@ -33,8 +33,6 @@ class CommunitySelectionActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-//        recyclerViewCommunitySelection.layoutManager =
-//            androidx.recyclerview.widget.GridLayoutManager(this, 3)
         val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerViewCommunitySelection.layoutManager = layoutManager
         listAdapter = CommunitySelectionAdapter(this, ::selectionListener)

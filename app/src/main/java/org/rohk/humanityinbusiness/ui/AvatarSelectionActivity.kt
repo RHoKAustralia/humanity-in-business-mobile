@@ -11,6 +11,10 @@ import org.rohk.humanityinbusiness.utils.PreferenceUtils
 
 class AvatarSelectionActivity : AppCompatActivity() {
 
+    companion object  {
+       const val avatarURL = "https://humanity-in-business.s3-ap-southeast-2.amazonaws.com/avatars/avatar"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_avatar_selection)
@@ -19,7 +23,7 @@ class AvatarSelectionActivity : AppCompatActivity() {
 
     private fun initView() {
         recyclerViewAvatarSelection.layoutManager =
-            GridLayoutManager(this, 3) as RecyclerView.LayoutManager?
+            GridLayoutManager(this, 3)
 
         //This will for default android divider
         recyclerViewAvatarSelection.addItemDecoration(GridItemDecoration(10, 3))
@@ -29,28 +33,28 @@ class AvatarSelectionActivity : AppCompatActivity() {
         listAdapter.setList(getAvatars())
     }
 
-    private fun saveSelectedAvatar(avatar: Int) {
+    private fun saveSelectedAvatar(avatar: String) {
         PreferenceUtils().setSelectedAvatar(this, avatar)
         startActivity(Intent(applicationContext, MainActivity::class.java))
 
         finish()
     }
 
-    private fun getAvatars(): List<Int> = listOf(
-        R.drawable.avatar0,
-        R.drawable.avatar1,
-        R.drawable.avatar2,
-        R.drawable.avatar3,
-        R.drawable.avatar4,
-        R.drawable.avatar5,
-        R.drawable.avatar6,
-        R.drawable.avatar7,
-        R.drawable.avatar8,
-        R.drawable.avatar9,
-        R.drawable.avatar10,
-        R.drawable.avatar11,
-        R.drawable.avatar12,
-        R.drawable.avatar13,
-        R.drawable.avatar14
+    private fun getAvatars(): List<String> = listOf(
+        avatarURL + 0,
+        avatarURL + 1,
+        avatarURL + 2,
+        avatarURL + 3,
+        avatarURL + 4,
+        avatarURL + 5,
+        avatarURL + 6,
+        avatarURL + 7,
+        avatarURL + 8,
+        avatarURL + 9,
+        avatarURL + 10,
+        avatarURL + 11,
+        avatarURL + 12,
+        avatarURL + 13,
+        avatarURL + 14
     )
 }

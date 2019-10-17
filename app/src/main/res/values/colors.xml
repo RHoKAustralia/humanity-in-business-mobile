@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F89323</color>
     <color name="colorPrimaryDark">#F89323</color>
     <color name="colorAccent">#D81B60</color>
+<!--    colour palette-->
+    <color name="colorPrimary">#E76D52</color>
+    <color name="colorSecondary">#3A4D52</color>
+    <color name="colorSupporting1">#E76D52</color>
+    <color name="colorSupporting2">#3A4D52</color>
+    <color name="colorDisabled">#C4C4C4</color>
+    <color name="colorTextBlack">#000000</color>
+    <color name="colorBackground">#FFF9E9</color>
+    <color name="colorBackgroundWhite">#000000</color>
+
+    <color name="material_ripple_light">#1f000000</color>
+    <color name="material_ripple_dark">#1fffffff</color>
 </resources>

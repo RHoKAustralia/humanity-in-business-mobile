@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- font sizes, in multiples of 4sp -->
+    <dimen name="font_unit_1">4sp</dimen>
+    <dimen name="font_unit_2">8sp</dimen>
+    <dimen name="font_unit_2_5">10sp</dimen>
+    <dimen name="font_unit_3">12sp</dimen>
+    <dimen name="font_unit_4">16sp</dimen>
+    <dimen name="font_unit_5">20sp</dimen>
+    <dimen name="font_unit_6">22sp</dimen>
+    <dimen name="font_unit_7">28sp</dimen>
+    <dimen name="font_unit_8">32sp</dimen>
+    <dimen name="font_unit_9">36sp</dimen>
+
+    <!-- typical spacing between two views, in multiples of 8dp -->
+    <dimen name="space_unit_0_5">4dp</dimen>
+    <dimen name="space_unit_1">8dp</dimen>
+    <dimen name="space_unit_1_5">12dp</dimen>
+    <dimen name="space_unit_2">16dp</dimen>
+    <dimen name="space_unit_2_5">20dp</dimen>
+    <dimen name="space_unit_3">24dp</dimen>
+    <dimen name="space_unit_4">32dp</dimen>
+    <dimen name="space_unit_5">40dp</dimen>
+    <dimen name="space_unit_6">48dp</dimen>
+    <dimen name="space_unit_7">56dp</dimen>
+    <dimen name="space_unit_8">64dp</dimen>
+
+    <dimen name="button_max_width">416dp</dimen>
+    <dimen name="button_min_height">54dp</dimen>
+</resources>

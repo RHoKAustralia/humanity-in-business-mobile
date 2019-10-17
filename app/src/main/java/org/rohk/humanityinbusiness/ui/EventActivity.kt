@@ -1,35 +1,14 @@
 package org.rohk.humanityinbusiness.ui
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.Window
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_challenge.*
-import kotlinx.android.synthetic.main.activity_challenge.animationView
-import kotlinx.android.synthetic.main.activity_challenge.imgChallenge
-import kotlinx.android.synthetic.main.activity_challenge.layoutContainer
-import kotlinx.android.synthetic.main.activity_challenge.tvDate
-import kotlinx.android.synthetic.main.activity_challenge.tvDesc
-import kotlinx.android.synthetic.main.activity_challenge.tvSubTitle
-import kotlinx.android.synthetic.main.activity_challenge.tvTitle
 import kotlinx.android.synthetic.main.activity_event.*
 import org.rohk.humanityinbusiness.R
-import org.rohk.humanityinbusiness.http.ServiceAPI
-import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
-import org.rohk.humanityinbusiness.http.model.RequestAddChallengeModel
-import org.rohk.humanityinbusiness.ui.viewmodel.ChallengeModel
 import org.rohk.humanityinbusiness.ui.viewmodel.EventModel
 import org.rohk.humanityinbusiness.utils.DateUtils
 import org.rohk.humanityinbusiness.utils.GlideApp
-import org.rohk.humanityinbusiness.utils.PreferenceUtils
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.net.HttpURLConnection
 
 class EventActivity : AppCompatActivity() {
 

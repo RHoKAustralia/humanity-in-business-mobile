@@ -2,24 +2,18 @@ package org.rohk.humanityinbusiness.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.appcompat.widget.Toolbar
-import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.expandedImage
-import kotlinx.android.synthetic.main.activity_main.tvName
-import kotlinx.android.synthetic.main.activity_main.tvPoints
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
-import org.rohk.humanityinbusiness.ui.viewmodel.EventModel
 import org.rohk.humanityinbusiness.ui.viewmodel.ProfileModel
 import org.rohk.humanityinbusiness.ui.viewmodel.TeamModel
-import org.rohk.humanityinbusiness.utils.GlideApp
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,8 +23,6 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     lateinit var listAdapter: DashboardAdapter
-//    lateinit var challengesList: List<ChallengeModel>
-//    lateinit var eventsList: List<EventModel>
     lateinit var teamsList: List<TeamModel>
 
 
@@ -67,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                     scrollRange = appBarLayout.totalScrollRange
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.title = "Let's start something new"
+                    collapsingToolbarLayout.title = "Choose Your Project"
                     isShow = true
                 } else if (isShow) {
                     collapsingToolbarLayout.title =
@@ -78,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         getProfile()
-        getAllTeams(1) // todo select event
+        getAllTeams(PreferenceUtils().getSelectedEventId(this))
     }
 
     private fun getProfile() {
@@ -91,19 +83,26 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     response.body()?.let {
                         setProfile(it)
-                    } ?: Toast.makeText(applicationContext, "Oops, could not fetch SDGs!", Toast.LENGTH_LONG).show()
+                    } ?: Toast.makeText(
+                        applicationContext,
+                        "Oops, could not fetch SDGs!",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onFailure(call: Call<ProfileModel>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Oops, could not fetch SDGs!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "Oops, could not fetch SDGs!",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             })
     }
 
     private fun setProfile(profileModel: ProfileModel) {
         tvName.text = profileModel.full_name
-//        tvPoints.text = "${profileModel.total_points} hours"
-        tvPoints.text = "16 Hours"
+        tvPoints.text = "${profileModel.hours} Hours"
     }
 
     private fun selectionListener(selectedTeam: TeamModel) {
@@ -118,43 +117,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-//    private fun selectionListener(selectedEvent: EventModel) {
-//        val intent = Intent(this, EventActivity::class.java)
-//        intent.putExtra("ID", selectedEvent.id)
-//        intent.putExtra("community_id", selectedEvent.community_id)
-//        intent.putExtra("name", selectedEvent.name)
-//        intent.putExtra("description", selectedEvent.description)
-//        intent.putExtra("date", selectedEvent.date)
-//        intent.putExtra("hours", selectedEvent.hours)
-//        intent.putExtra("image_url", selectedEvent.image_url)
-//        startActivity(intent)
-//
-//    }
-
-//    private fun getUpcomingChallenges() {
-//        ServiceAPI().getUpcomingChallenges(
-//            object : Callback<List<ChallengeModel>> {
-//                override fun onResponse(
-//                    call: Call<List<ChallengeModel>>,
-//                    response: Response<List<ChallengeModel>>
-//                ) {
-//                    response.body()?.let {
-//                        challengesList = it
-//                        listAdapter.setList(challengesList)
-//                    }
-//                    hideLoadingAnimation()
-//                }
-//
-//                override fun onFailure(call: Call<List<ChallengeModel>>, t: Throwable) {
-//                    Toast.makeText(applicationContext, "Oops, could not fetch challenges!", Toast.LENGTH_LONG)
-//                        .show()
-//                    hideLoadingAnimation()
-//                }
-//            })
-//    }
-
-    private fun getAllTeams(eventId : Int) {
+    private fun getAllTeams(eventId: String) {
         ServiceAPI().getTeamsByEventId(eventId,
             object : Callback<List<TeamModel>> {
                 override fun onResponse(
@@ -169,33 +132,16 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<TeamModel>>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Oops, could not fetch events!", Toast.LENGTH_LONG)
+                    Toast.makeText(
+                        applicationContext,
+                        "Oops, could not fetch events!",
+                        Toast.LENGTH_LONG
+                    )
                         .show()
                     hideLoadingAnimation()
                 }
             })
     }
-//    private fun getAllEvents(communityId : Int) {
-//        ServiceAPI().getAllEvents(communityId,
-//            object : Callback<List<EventModel>> {
-//                override fun onResponse(
-//                    call: Call<List<EventModel>>,
-//                    response: Response<List<EventModel>>
-//                ) {
-//                    response.body()?.let {
-//                        eventsList = it
-//                        listAdapter.setList(eventsList)
-//                    }
-//                    hideLoadingAnimation()
-//                }
-//
-//                override fun onFailure(call: Call<List<EventModel>>, t: Throwable) {
-//                    Toast.makeText(applicationContext, "Oops, could not fetch events!", Toast.LENGTH_LONG)
-//                        .show()
-//                    hideLoadingAnimation()
-//                }
-//            })
-//    }
 
     private fun hideLoadingAnimation() {
         animationView.visibility = View.GONE

@@ -4,10 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_business_profile.*
-import kotlinx.android.synthetic.main.activity_business_profile.expandedImage
-import kotlinx.android.synthetic.main.activity_business_profile.tvName
-import kotlinx.android.synthetic.main.activity_business_profile.tvSubTitle
 import kotlinx.android.synthetic.main.activity_community_profile.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
@@ -32,14 +28,14 @@ class CommunityProfileActivity : AppCompatActivity() {
     private fun getCommunityProfile() {
         ServiceAPI().getCommunityProfile(
             communityId,
-            object : Callback< CommunityModel> {
+            object : Callback<CommunityModel> {
                 override fun onResponse(
                     call: Call<CommunityModel>,
                     response: Response<CommunityModel>
                 ) {
                     response.body()?.let {
                         tvName.text = it.name
-                         tvSubTitle.text = it.description
+                        tvSubTitle.text = it.description
 
                         GlideApp.with(this@CommunityProfileActivity)
                             .load(it.image_url)
@@ -54,7 +50,11 @@ class CommunityProfileActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<CommunityModel>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Oops, could not get community profile!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "Oops, could not get community profile!",
+                        Toast.LENGTH_LONG
+                    ).show()
 
                     hideLoadingAnimation()
                 }

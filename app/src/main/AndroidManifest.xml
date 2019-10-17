@@ -20,10 +20,6 @@
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-                android:name=".ui.BusinessProfileActivity"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
                 android:name=".ui.CommunityProfileActivity"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
@@ -45,19 +41,11 @@
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-                android:name=".ui.GoalsSelectionActivity"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
                 android:name=".ui.CommunitySelectionActivity"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
                 android:name=".ui.LeaderboardActivity"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
-                android:name=".ui.ChallengeActivity"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
