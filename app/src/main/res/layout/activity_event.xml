@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        tools:context=".ui.ChallengeActivity">
+        tools:context=".ui.EventActivity">
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
@@ -21,67 +21,25 @@
             android:id="@+id/layoutContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:layout_margin="12dp">
 
-        <ImageView
-                android:id="@+id/imgChallenge"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="fitXY"
-                android:layout_alignParentTop="true"/>
-
-        <LinearLayout
-                android:layout_below="@id/imgChallenge"
+        <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="12dp">
-            <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginBottom="12dp"/>
+                android:text="Choose an event"
+                android:textColor="@color/colorPrimary"
+                android:textSize="36dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"
+                android:layout_alignParentTop="true"/>
 
-            <TextView
-                    android:id="@+id/tvSubTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="12dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCommunitySelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:layout_below="@id/tvTitle"/>
 
-            <TextView
-                    android:id="@+id/tvDesc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="12dp"/>
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Date"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="5dp"/>
-
-            <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"/>
-            <Button
-                    android:id="@+id/btnNext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Yes, Count me in!"
-                    android:background="@color/colorPrimaryDark"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"/>
-        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

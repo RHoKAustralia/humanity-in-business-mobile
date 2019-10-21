@@ -5,7 +5,7 @@ import androidx.core.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.item_goal_selection.view.*
+import kotlinx.android.synthetic.main.item_community_selection.view.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.ui.viewmodel.CommunityModel
 import org.rohk.humanityinbusiness.utils.GlideApp
@@ -41,10 +41,10 @@ class CommunitySelectionAdapter(mainContext: Context, private val clickListener:
     class CommunitySelectionHolder(itemView: View,
                                    private val clickListener: (CommunityModel) -> Unit) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         fun bindView(communityModel: CommunityModel, context: Context, positon: Int) {
-            itemView.tvGoalTitle.text = communityModel.name
+            itemView.tvCommunityTitle.text = communityModel.name
             GlideApp.with(context)
                 .load(imageList[positon])
-                .into(itemView.imgGoal)
+                .into(itemView.imgCommunity)
 
 //            GlideApp.with(context)
 //                .load(communityModel.image_url)

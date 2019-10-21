@@ -50,7 +50,7 @@ class PreferenceUtils {
 
     fun getSelectedCommunityId(context: Context): String {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        return preferences.getString(PREFERENCES_COMMUNITY_ID, "0")
+        return preferences.getString(PREFERENCES_COMMUNITY_ID, "")
     }
 
     fun setSelectedCommunityId(context: Context, communityId: String) {
@@ -62,7 +62,7 @@ class PreferenceUtils {
 
     fun getSelectedEventId(context: Context): String {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        return preferences.getString(PREFERENCES_EVENT_ID, "1")
+        return preferences.getString(PREFERENCES_EVENT_ID, "")
     }
 
     fun setSelectedEventId(context: Context, eventId: String) {

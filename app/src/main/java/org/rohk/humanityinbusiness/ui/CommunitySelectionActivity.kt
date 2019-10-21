@@ -24,12 +24,6 @@ class CommunitySelectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community_selection)
         initView()
-
-        btnDone.visibility = View.GONE
-
-//            setOnClickListener {
-//            sendSelectedCommunities()
-//        }
     }
 
     private fun initView() {
@@ -38,16 +32,6 @@ class CommunitySelectionActivity : AppCompatActivity() {
         listAdapter = CommunitySelectionAdapter(this, ::selectionListener)
         recyclerViewCommunitySelection.adapter = listAdapter
         getAllCommunities()
-    }
-
-    private fun selectionListener(communitySelectionModel: CommunityModel) {
-        sendSelectedCommunities(communitySelectionModel)
-
-//        communityList.forEach {
-//            if (it.id == communitySelectionModel.id) {
-//                it.isSelected = communitySelectionModel.isSelected
-//            }
-//        }
     }
 
     private fun getAllCommunities() {
@@ -77,51 +61,13 @@ class CommunitySelectionActivity : AppCompatActivity() {
             })
     }
 
-    private fun sendSelectedCommunities(communitySelectionModel: CommunityModel) {
+    private fun selectionListener(communitySelectionModel: CommunityModel) {
         PreferenceUtils().setSelectedCommunityId(this, communitySelectionModel.id)
-        getAllEvents(communitySelectionModel.id)
-
         layoutContainer.visibility = View.GONE
         animationView.visibility = View.VISIBLE
-    }
 
-    private fun getAllEvents(communityId: String) {
-        ServiceAPI().getAllEvents(communityId,
-            object : Callback<List<EventModel>> {
-                override fun onResponse(
-                    call: Call<List<EventModel>>,
-                    response: Response<List<EventModel>>
-                ) { // TODO show events list instead of picking the first one
-                    response.body()?.let {
-                        selectionListener(it[0])
-                        animationView.visibility = View.GONE
-                        layoutContainer.visibility = View.VISIBLE
-                    }
-                }
-
-                override fun onFailure(call: Call<List<EventModel>>, t: Throwable) {
-                    animationView.visibility = View.GONE
-                    layoutContainer.visibility = View.VISIBLE
-                    Toast.makeText(
-                        applicationContext,
-                        "Oops, could not fetch events!",
-                        Toast.LENGTH_LONG
-                    )
-                        .show()
-                }
-            })
-    }
-
-    private fun selectionListener(selectedEvent: EventModel) {
-        PreferenceUtils().setSelectedEventId(this, selectedEvent.id.toString())
         val intent = Intent(this, EventActivity::class.java)
-        intent.putExtra("ID", selectedEvent.id)
-        intent.putExtra("community_id", selectedEvent.community_id)
-        intent.putExtra("name", selectedEvent.name)
-        intent.putExtra("description", selectedEvent.description)
-        intent.putExtra("date", selectedEvent.date)
-        intent.putExtra("hours", selectedEvent.hours)
-        intent.putExtra("image_url", selectedEvent.image_url)
+        intent.putExtra("community_id", communitySelectionModel.id)
         startActivity(intent)
         finish()
 

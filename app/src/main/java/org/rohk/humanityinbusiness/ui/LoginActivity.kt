@@ -57,8 +57,10 @@ class LoginActivity : AppCompatActivity() {
 
                         preferenceUtils.setLoginEmail(this@LoginActivity, etEmail.text.toString())
 
-                        if (preferenceUtils.getSelectedCommunityId(this@LoginActivity).equals("0")) {
+                        if (preferenceUtils.getSelectedCommunityId(this@LoginActivity).isBlank()) {
                             startActivity(Intent(this@LoginActivity, CommunitySelectionActivity::class.java))
+                        } else  if (preferenceUtils.getSelectedEventId(this@LoginActivity).isBlank()) {
+                            startActivity(Intent(this@LoginActivity, EventActivity::class.java))
                         } else {
                             startActivity(Intent(applicationContext, MainActivity::class.java))
                         }
