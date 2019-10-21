@@ -41,20 +41,20 @@ class AvatarSelectionActivity : AppCompatActivity() {
     }
 
     private fun getAvatars(): List<String> = listOf(
-        avatarURL + 0,
-        avatarURL + 1,
-        avatarURL + 2,
-        avatarURL + 3,
-        avatarURL + 4,
-        avatarURL + 5,
-        avatarURL + 6,
-        avatarURL + 7,
-        avatarURL + 8,
-        avatarURL + 9,
-        avatarURL + 10,
-        avatarURL + 11,
-        avatarURL + 12,
-        avatarURL + 13,
-        avatarURL + 14
+        avatarURL + "0.png",
+        avatarURL + "1.png",
+        avatarURL + "2.png",
+        avatarURL + "3.png",
+        avatarURL + "4.png",
+        avatarURL + "5.png",
+        avatarURL + "6.png",
+        avatarURL + "7.png",
+        avatarURL + "8.png",
+        avatarURL + "9.png",
+        avatarURL + "10.png",
+        avatarURL + "11.png",
+        avatarURL + "12.png",
+        avatarURL + "13.png",
+        avatarURL + "14.png"
     )
 }

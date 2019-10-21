@@ -23,13 +23,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         etEmail.setText(PreferenceUtils().getLoginEmail(this))
-        etPassword.setText("1234")
         btnSignIn.setOnClickListener {
             if (!validateFields()) {
                 login()
             } else {
                 showDialog("Please enter all details!")
             }
+        }
+        tvRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
     }
 

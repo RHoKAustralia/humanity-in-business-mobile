@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                         setProfile(it)
                     } ?: Toast.makeText(
                         applicationContext,
-                        "Oops, could not fetch SDGs!",
+                        "Oops, could not fetch profile!",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<ProfileModel>, t: Throwable) {
                     Toast.makeText(
                         applicationContext,
-                        "Oops, could not fetch SDGs!",
+                        "Oops, could not fetch profile!",
                         Toast.LENGTH_LONG
                     ).show()
                 }

@@ -20,7 +20,7 @@ interface APIServiceInterface {
     fun login(@Body request: RequestLoginModel): Call<RegisterResponseModel>
 
     // Profile Page
-    @GET("profile/{userId}")
+    @GET("users/{userId}/profile")
     fun getProfile(@Path("userId") userId: String): Call<ProfileModel>
 
     // Communuties Endpoint

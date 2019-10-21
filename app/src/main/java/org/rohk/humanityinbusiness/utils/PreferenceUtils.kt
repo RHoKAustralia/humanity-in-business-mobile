@@ -8,7 +8,6 @@ class PreferenceUtils {
 
     val PREFERENCES_EMAIL = "login_email"
     val PREFERENCES_USERID = "user_id"
-    val PREFERENCES_SDG_IDS = "sdg_ids"
     val PREFERENCES_AVATAR = "avatar_drawable"
     val PREFERENCES_COMMUNITY_ID = "community_id"
     val PREFERENCES_EVENT_ID = "event_id"
@@ -34,18 +33,6 @@ class PreferenceUtils {
         val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
         val preferencesEditor = preferences.edit()
         preferencesEditor.putString(PREFERENCES_USERID, userId)
-        preferencesEditor.apply()
-    }
-
-    fun getSelectedSDGIds(context: Context): String {
-        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        return preferences.getString(PREFERENCES_SDG_IDS, "")
-    }
-
-    fun setSelectedSDGIds(context: Context, sdgIds: String) {
-        val preferences = context.getSharedPreferences(APP_DATA, Context.MODE_PRIVATE)
-        val preferencesEditor = preferences.edit()
-        preferencesEditor.putString(PREFERENCES_SDG_IDS, sdgIds)
         preferencesEditor.apply()
     }
 
