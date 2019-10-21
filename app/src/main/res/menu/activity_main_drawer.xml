@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+                android:id="@+id/nav_item_leaderboard"
+                android:icon="@drawable/ic_trophy"
+                android:title="Leaderboard" />
+        <item
+                android:id="@+id/nav_item_profile"
+                android:icon="@drawable/ic_user"
+                android:title="Profile" />
+    </group>
+
+    <item android:title="Change">
+        <menu>
+            <item
+                    android:id="@+id/nav_item_community"
+                    android:icon="@drawable/ic_hand"
+                    android:title="Community" />
+            <item
+                    android:id="@+id/nav_item_event"
+                    android:icon="@drawable/ic_cal"
+                    android:title="Event" />
+
+            <item
+                    android:id="@+id/nav_item_avatar"
+                    android:icon="@drawable/ic_avatar"
+                    android:title="Avatar" />
+        </menu>
+    </item>
+
+    <group android:id="@+id/group_menu">
+        <item
+                android:id="@+id/version"
+                android:title="Version: 1.0" />
+    </group>
+</menu>

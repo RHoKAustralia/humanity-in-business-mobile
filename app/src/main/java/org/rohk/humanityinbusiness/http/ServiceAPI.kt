@@ -4,10 +4,7 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.rohk.humanityinbusiness.BuildConfig
-import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
-import org.rohk.humanityinbusiness.http.model.RequestJoinTeamModel
-import org.rohk.humanityinbusiness.http.model.RequestLoginModel
-import org.rohk.humanityinbusiness.http.model.RequestRegisterModel
+import org.rohk.humanityinbusiness.http.model.*
 import org.rohk.humanityinbusiness.ui.viewmodel.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,17 +36,17 @@ class ServiceAPI {
 
     fun register(
         request: RequestRegisterModel,
-        callback: Callback<RegisterResponseModel>
+        callback: Callback<ResponseModel>
     ) {
-        val call: Call<RegisterResponseModel> = getService().register(request)
+        val call: Call<ResponseModel> = getService().register(request)
         call.enqueue(callback)
     }
 
     fun login(
         request: RequestLoginModel,
-        callback: Callback<RegisterResponseModel>
+        callback: Callback<ResponseModel>
     ) {
-        val call: Call<RegisterResponseModel> = getService().login(request)
+        val call: Call<ResponseModel> = getService().login(request)
         call.enqueue(callback)
     }
 
@@ -82,9 +79,9 @@ class ServiceAPI {
     fun joinTeam(
         teamId: Int,
         request: RequestJoinTeamModel,
-        callback: Callback<RegisterResponseModel>
+        callback: Callback<ResponseModel>
     ) {
-        val call: Call<RegisterResponseModel> = getService().joinTeam(teamId, request)
+        val call: Call<ResponseModel> = getService().joinTeam(teamId, request)
         call.enqueue(callback)
     }
 
@@ -100,6 +97,15 @@ class ServiceAPI {
         callback: Callback<List<UserLeaderBoardModel>>
     ) {
         val call: Call<List<UserLeaderBoardModel>> = getService().getLeaderboard(communityId)
+        call.enqueue(callback)
+    }
+
+    fun updateAvatar(
+        userId: String,
+        request: RequestAvatarModel,
+        callback: Callback<ResponseModel>
+    ) {
+        val call: Call<ResponseModel> = getService().updateAvatar(userId, request)
         call.enqueue(callback)
     }
 }

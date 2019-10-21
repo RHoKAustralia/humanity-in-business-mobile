@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_team.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
-import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
+import org.rohk.humanityinbusiness.http.model.ResponseModel
 import org.rohk.humanityinbusiness.http.model.RequestJoinTeamModel
 import org.rohk.humanityinbusiness.utils.GlideApp
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
@@ -29,7 +29,7 @@ class TeamActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         teamId = intent.getIntExtra("team_id", 0)
         projectId = intent.getIntExtra("project_id", 0)
         name = intent.getStringExtra("name")
@@ -78,16 +78,16 @@ class TeamActivity : AppCompatActivity() {
         ServiceAPI().joinTeam(
             teamId,
             request,
-            object : Callback<RegisterResponseModel> {
+            object : Callback<ResponseModel> {
                 override fun onResponse(
-                    call: Call<RegisterResponseModel>,
-                    response: Response<RegisterResponseModel>
+                    call: Call<ResponseModel>,
+                    response: Response<ResponseModel>
                 ) {
                     dialog.dismiss()
                     finish()
                 }
 
-                override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
                     finish()
                 }
             })
@@ -96,5 +96,10 @@ class TeamActivity : AppCompatActivity() {
     private fun hideLoadingAnimation() {
         animationView.visibility = View.GONE
         layoutContainer.visibility = View.VISIBLE
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

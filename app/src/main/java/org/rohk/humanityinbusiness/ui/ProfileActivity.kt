@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
@@ -23,14 +24,18 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         getProfile()
         getAllEvents(PreferenceUtils().getSelectedCommunityId(this))
     }
 
     private fun getProfile() {
+        var profileId = intent.getStringExtra("user_id")
+        if(profileId.isNullOrBlank()) {
+            profileId = PreferenceUtils().getUserId(this)
+        }
         ServiceAPI().getProfile(
-            PreferenceUtils().getUserId(this),
+            profileId,
             object : Callback<ProfileModel> {
                 override fun onResponse(
                     call: Call<ProfileModel>,
@@ -62,15 +67,14 @@ class ProfileActivity : AppCompatActivity() {
         tvName.text = profileModel.full_name
         tvPoints.text = "${profileModel.hours} Hours"
         tvTitle.text = profileModel.title
-    }
 
-    override fun onResume() {
-        super.onResume()
-        val url = PreferenceUtils().getSelectedAvatar(this)
-        if (!url.isNullOrBlank()) {
+        if (!profileModel.image_url.isNullOrBlank() && profileModel.image_url.contains("http", false)) {
             GlideApp.with(this)
-                .load(url)
+                .load(profileModel.image_url)
+                .placeholder(R.drawable.ic_user)
                 .into(expandedImage)
+        } else {
+            expandedImage.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_user))
         }
     }
 
@@ -115,4 +119,8 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 }

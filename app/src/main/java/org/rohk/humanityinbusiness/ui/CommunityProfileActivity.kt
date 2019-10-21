@@ -21,7 +21,7 @@ class CommunityProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community_profile)
         communityId = intent.getIntExtra("ID", 0)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         getCommunityProfile()
     }
 
@@ -64,5 +64,10 @@ class CommunityProfileActivity : AppCompatActivity() {
     private fun hideLoadingAnimation() {
         animationView.visibility = View.GONE
         layoutContainer.visibility = View.VISIBLE
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

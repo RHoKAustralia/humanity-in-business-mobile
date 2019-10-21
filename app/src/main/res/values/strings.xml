@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">HIB</string>
     <string name="splash_name">Better Professional Awards</string>
     <string name="login"><u>Already registered! Login here.</u></string>
     <string name="register"><u>New user! Register here.</u></string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>

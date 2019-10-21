@@ -1,5 +1,6 @@
 package org.rohk.humanityinbusiness.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class LeaderboardActivity : AppCompatActivity() {
 
     lateinit var communityList: List<UserLeaderBoardModel>
@@ -20,6 +22,7 @@ class LeaderboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_leaderboard)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         initView()
     }
 
@@ -32,7 +35,9 @@ class LeaderboardActivity : AppCompatActivity() {
     }
 
     private fun selectionListener(leaderBoardModel: UserLeaderBoardModel) {
-// TODO load profile
+        val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra("user_id", leaderBoardModel.id.toString())
+        startActivity(intent)
     }
 
     private fun getLeaderboard() {
@@ -61,5 +66,10 @@ class LeaderboardActivity : AppCompatActivity() {
                     ).show()
                 }
             })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

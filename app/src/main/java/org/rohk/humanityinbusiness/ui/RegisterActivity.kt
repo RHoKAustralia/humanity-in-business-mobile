@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import org.rohk.humanityinbusiness.http.ServiceAPI
-import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
+import org.rohk.humanityinbusiness.http.model.ResponseModel
 import org.rohk.humanityinbusiness.http.model.RequestRegisterModel
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
 import retrofit2.Call
@@ -18,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(org.rohk.humanityinbusiness.R.layout.activity_register) // TODO add image url avatar
+        setContentView(org.rohk.humanityinbusiness.R.layout.activity_register)
         btnRegister.setOnClickListener {
             register()
         }
@@ -44,10 +44,10 @@ class RegisterActivity : AppCompatActivity() {
 
             ServiceAPI().register(
                 request,
-                object : Callback<RegisterResponseModel> {
+                object : Callback<ResponseModel> {
                     override fun onResponse(
-                        call: Call<RegisterResponseModel>,
-                        response: Response<RegisterResponseModel>
+                        call: Call<ResponseModel>,
+                        response: Response<ResponseModel>
                     ) {
                         response.body()?.id?.let {
                             PreferenceUtils().setUserId(this@RegisterActivity, it)
@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
                         hideLoadingAnimation()
                     }
 
-                    override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
                         Toast.makeText(
                             applicationContext,
                             "Oops, registration failed!",

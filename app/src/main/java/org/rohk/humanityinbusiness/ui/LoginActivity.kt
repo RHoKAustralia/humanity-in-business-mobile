@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.rohk.humanityinbusiness.R
 import org.rohk.humanityinbusiness.http.ServiceAPI
-import org.rohk.humanityinbusiness.http.model.RegisterResponseModel
+import org.rohk.humanityinbusiness.http.model.ResponseModel
 import org.rohk.humanityinbusiness.http.model.RequestLoginModel
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
 import retrofit2.Call
@@ -44,10 +44,10 @@ class LoginActivity : AppCompatActivity() {
 
         ServiceAPI().login(
             request,
-            object : Callback<RegisterResponseModel> {
+            object : Callback<ResponseModel> {
                 override fun onResponse(
-                    call: Call<RegisterResponseModel>,
-                    response: Response<RegisterResponseModel>
+                    call: Call<ResponseModel>,
+                    response: Response<ResponseModel>
                 ) {
                     if (response.code() == HttpURLConnection.HTTP_OK) {
                         val preferenceUtils = PreferenceUtils()
@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
                     hideLoadingAnimation()
                     showDialog("Oops, login failed!")
                 }

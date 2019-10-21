@@ -4,15 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_avatar_selection.*
 import org.rohk.humanityinbusiness.R
+import org.rohk.humanityinbusiness.http.ServiceAPI
+import org.rohk.humanityinbusiness.http.model.RequestAvatarModel
+import org.rohk.humanityinbusiness.http.model.ResponseModel
 import org.rohk.humanityinbusiness.utils.PreferenceUtils
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AvatarSelectionActivity : AppCompatActivity() {
 
-    companion object  {
-       const val avatarURL = "https://humanity-in-business.s3-ap-southeast-2.amazonaws.com/avatars/avatar"
+    companion object {
+        const val avatarURL =
+            "https://humanity-in-business.s3-ap-southeast-2.amazonaws.com/avatars/avatar"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,9 +41,28 @@ class AvatarSelectionActivity : AppCompatActivity() {
 
     private fun saveSelectedAvatar(avatar: String) {
         PreferenceUtils().setSelectedAvatar(this, avatar)
-        startActivity(Intent(applicationContext, MainActivity::class.java))
 
-        finish()
+        val request = RequestAvatarModel(
+            avatar
+        )
+
+        ServiceAPI().updateAvatar(
+            PreferenceUtils().getUserId(this),
+            request,
+            object : Callback<ResponseModel> {
+                override fun onResponse(
+                    call: Call<ResponseModel>,
+                    response: Response<ResponseModel>
+                ) {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                }
+
+                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                }
+            })
     }
 
     private fun getAvatars(): List<String> = listOf(

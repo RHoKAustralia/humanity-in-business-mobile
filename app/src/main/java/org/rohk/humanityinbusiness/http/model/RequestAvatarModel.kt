@@ -1,3 +1,3 @@
 package org.rohk.humanityinbusiness.http.model
 
-class RegisterResponseModel(val id: String)
+class RequestAvatarModel(val image_url: String)
