@@ -27,7 +27,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Choose an event"
+                android:text="Choose your workshop"
                 android:textColor="@color/colorPrimary"
                 android:textSize="36dp"
                 android:textStyle="bold"

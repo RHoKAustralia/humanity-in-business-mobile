@@ -61,7 +61,8 @@ class EventActivity : AppCompatActivity() {
 
     private fun selectionListener(selectedEvent: EventModel) {
         PreferenceUtils().setSelectedEventId(this, selectedEvent.id.toString())
-        startActivity(Intent(applicationContext, AvatarSelectionActivity::class.java))
+//        startActivity(Intent(applicationContext, AvatarSelectionActivity::class.java))
+        startActivity(Intent(applicationContext, MainActivity::class.java))
         finish()
     }
 }

@@ -99,6 +99,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun setProfile(profileModel: ProfileModel) {
         nav_header_textView.text = profileModel.full_name
+        nav_header_points.text = "${profileModel.hours} Hours"
         val url = PreferenceUtils().getSelectedAvatar(this)
         if (!url.isNullOrBlank()) {
             GlideApp.with(this)
@@ -169,7 +170,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.nav_item_leaderboard -> startActivity(Intent(this, LeaderboardActivity::class.java))
+//            R.id.nav_item_leaderboard -> startActivity(Intent(this, LeaderboardActivity::class.java))
             R.id.nav_item_profile -> startActivity(Intent(this, ProfileActivity::class.java))
             R.id.nav_item_community -> {
                 startActivity(Intent(this, CommunitySelectionActivity::class.java))
@@ -180,10 +181,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 finish()
             }
 
-            R.id.nav_item_avatar -> {
-                startActivity(Intent(this, AvatarSelectionActivity::class.java))
-                finish()
-            }
+//            R.id.nav_item_avatar -> {
+//                startActivity(Intent(this, AvatarSelectionActivity::class.java))
+//                finish()
+//            }
         }
 
         // close drawer when item is tapped

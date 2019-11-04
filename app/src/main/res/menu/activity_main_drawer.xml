@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
-        <item
-                android:id="@+id/nav_item_leaderboard"
-                android:icon="@drawable/ic_trophy"
-                android:title="Leaderboard" />
+<!--        <item-->
+<!--                android:id="@+id/nav_item_leaderboard"-->
+<!--                android:icon="@drawable/ic_trophy"-->
+<!--                android:title="Leaderboard" />-->
         <item
                 android:id="@+id/nav_item_profile"
                 android:icon="@drawable/ic_user"
-                android:title="Profile" />
+                android:title="Social CV" />
     </group>
 
     <item android:title="Change">
@@ -22,14 +22,35 @@
                     android:icon="@drawable/ic_cal"
                     android:title="Event" />
 
-            <item
-                    android:id="@+id/nav_item_avatar"
-                    android:icon="@drawable/ic_avatar"
-                    android:title="Avatar" />
+<!--            <item-->
+<!--                    android:id="@+id/nav_item_avatar"-->
+<!--                    android:icon="@drawable/ic_avatar"-->
+<!--                    android:title="Avatar" />-->
         </menu>
     </item>
+<!--    <item android:title="Information">-->
+<!--    <menu>-->
+<!--        <item-->
+<!--                android:id="@+id/nav_item_about"-->
+<!--                android:icon="@drawable/ic_about_us"-->
+<!--                android:title="About us" />-->
+<!--        <item-->
+<!--                android:id="@+id/nav_item_faq"-->
+<!--                android:icon="@drawable/ic_faq"-->
+<!--                android:title="FAQ" />-->
 
-    <group android:id="@+id/group_menu">
+<!--        <item-->
+<!--                android:id="@+id/nav_item_password"-->
+<!--                android:icon="@drawable/ic_password"-->
+<!--                android:title="Change password" />-->
+<!--        <item-->
+<!--                android:id="@+id/nav_item_support"-->
+<!--                android:icon="@drawable/ic_email"-->
+<!--                android:title="Contact support" />-->
+<!--    </menu>-->
+<!--    </item>-->
+
+    <group>
         <item
                 android:id="@+id/version"
                 android:title="Version: 1.0" />
