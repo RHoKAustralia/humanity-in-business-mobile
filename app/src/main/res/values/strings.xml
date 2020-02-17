@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">HIB</string>
-    <string name="splash_name">Better Professional Awards</string>
-    <string name="login"><u>Already registered! Login here.</u></string>
-    <string name="register"><u>New user! Register here.</u></string>
+    <string name="app_name">Social CV</string>
+    <string name="login"><u>BACK TO SIGN IN</u></string>
+    <string name="register"><u>CREATE ACCOUNT</u></string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
 </resources>

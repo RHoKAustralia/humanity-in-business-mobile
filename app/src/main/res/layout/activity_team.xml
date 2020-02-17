@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        tools:context=".ui.ChallengeActivity">
+        tools:context=".ui.TeamActivity">
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"

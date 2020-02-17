@@ -22,24 +22,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="12dp">
-
-        <TextView
-                android:id="@+id/tvTitle"
+        <LinearLayout
+                android:id="@+id/linHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Choose your workshop"
-                android:textColor="@color/colorPrimary"
-                android:textSize="36dp"
-                android:textStyle="bold"
-                android:layout_marginBottom="12dp"
-                android:layout_alignParentTop="true"/>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/space_unit_1_5"
+                android:layout_alignParentTop="true">
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/colorBlackText"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-light"
+                        android:textSize="26sp" />
+
+                <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Choose an event"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorLightGrey"
+                        android:textSize="16sp" />
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_user" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCommunitySelection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never"
-                android:layout_below="@id/tvTitle"/>
+                android:layout_below="@id/linHeader"/>
 
     </RelativeLayout>
 </LinearLayout>

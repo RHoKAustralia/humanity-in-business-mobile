@@ -3,33 +3,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="#F5F6F7"
         android:orientation="vertical"
-        android:padding="4dp">
+        android:padding="12dp">
 
-    <ImageView
-            android:id="@+id/imgEvent"
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter" />
+            android:layout_height="180dp">
 
-    <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <ImageView
+                android:id="@+id/imgEvent"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:scaleType="fitCenter" />
 
-    <TextView
-            android:id="@+id/tvDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:maxLines="2"
-            android:textSize="16sp"/>
+        <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="56dp"
+                android:layout_gravity="bottom|start"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/rounded_background_white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            <TextView
+                    android:id="@+id/tvDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@android:color/holo_red_light" />
+        </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -37,20 +48,44 @@
             android:orientation="horizontal">
 
         <TextView
-                android:id="@+id/tvSubTitle"
+                android:id="@+id/tvTitle"
                 android:layout_width="0dp"
+                android:layout_weight="5"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="12sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-        <TextView
-                android:id="@+id/tvDate"
+        <ImageView
+                android:id="@+id/imgShare"
                 android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="12sp" />
-
+                android:src="@android:drawable/ic_menu_share" />
     </LinearLayout>
 
+    <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:maxLines="2"
+            android:textSize="16sp" />
+
+    <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:maxLines="2"
+            android:textSize="16sp" />
+
+    <TextView
+            android:id="@+id/tvAttendeesCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="16sp" />
 </LinearLayout>

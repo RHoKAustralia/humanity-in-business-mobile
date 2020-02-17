@@ -1,105 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        tools:context=".ui.RegisterActivity"
-        android:background="@drawable/img_background"
-        android:orientation="vertical">
+        android:background="@drawable/bg_register"
+        android:orientation="vertical"
+        tools:context=".ui.RegisterActivity">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:lottie_fileName="lottie_loading.json"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        android:visibility="gone"/>
-
+            android:id="@+id/animationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_loading.json"
+            app:lottie_loop="true" />
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <LinearLayout
             android:id="@+id/layoutContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="12dp"
-            android:padding="12dp"
-            android:background="#ccffffff">
+            android:padding="26dp">
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign up!"
-                android:textSize="36dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginBottom="12dp"/>
-
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tell us a bit about yourself"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="80dp"
+                android:layout_marginTop="26dp"
+                android:text="Join the movement!\nTell us about you!"
+                android:textColor="@android:color/black"
+                android:textSize="22dp"
+                android:fontFamily="sans-serif-light"/>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full name">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:hint="Your name">
+
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"/>
+                    android:layout_marginBottom="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:hint="Your email address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                app:passwordToggleEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:inputType="textPassword"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email">
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"/>
+                    android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Title">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:hint="Your company">
+
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etTitle"
+                    android:id="@+id/etCompany"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"/>
+                    android:layout_marginBottom="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:hint="Your job title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJobTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Next"
-                android:background="@color/colorPrimary"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"/>
+                android:background="@drawable/bg_button"
+                android:text="SIGN UP"
+                android:textColor="@android:color/white" />
 
         <TextView
                 android:id="@+id/tvLogin"
@@ -107,7 +120,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/login"
-                android:textColor="@android:color/holo_red_dark" />
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorLightGrey" />
 
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -27,4 +27,6 @@
 
     <dimen name="button_max_width">416dp</dimen>
     <dimen name="button_min_height">54dp</dimen>
+    <dimen name="stroke_width">2dp</dimen>
+    <dimen name="elevation">2dp</dimen>
 </resources>

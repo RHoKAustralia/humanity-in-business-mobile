@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.ProjectsListActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/white"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_loading.json"
+            app:lottie_loop="true" />
+
+    <!--    <TextView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Choose your project"-->
+    <!--            android:textColor="@color/colorPrimary"-->
+    <!--            android:textStyle="bold"-->
+    <!--            android:textSize="28sp"-->
+    <!--            android:layout_margin="10dp"-->
+    <!--            app:layout_anchor="@id/app_bar"-->
+    <!--            app:layout_anchorGravity="bottom|end"></TextView>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--            android:id="@+id/bottomAppBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            app:navigationIcon="@drawable/ic_menu_color_control_normal_24dp"-->
+<!--            app:navigationContentDescription="Navigation icon"-->
+<!--            app:hideOnScroll="true" />-->
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/floatingActionButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_anchor="@id/bottomAppBar"-->
+<!--            app:srcCompat="@drawable/ic_add_color_control_normal_24dp" />-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -9,7 +9,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "org.rohk.humanityinbusiness"
+        applicationId "org.hib.socialcv"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 4
