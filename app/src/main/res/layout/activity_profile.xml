@@ -1,78 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_loading.json"
+            app:lottie_loop="true"
+            tools:ignore="MissingConstraints" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/layoutContainer"
+            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsingbar"
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-                app:titleEnabled="true"
-                android:fitsSystemWindows="true"
-                app:toolbarId="@+id/toolbar">
+                android:layout_height="120dp">
 
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                    android:id="@+id/toolbarItemDetailsView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="?attr/actionBarSize"-->
-<!--                    app:layout_collapseMode="pin" />-->
-            <LinearLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingbar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+                    app:titleEnabled="true"
+                    app:toolbarId="@+id/toolbar">
 
-                <TextView
-                        android:id="@+id/tvName"
+                <!--            <androidx.appcompat.widget.Toolbar-->
+                <!--                    android:id="@+id/toolbarItemDetailsView"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="?attr/actionBarSize"-->
+                <!--                    app:layout_collapseMode="pin" />-->
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
-                        android:textColor="@color/colorPrimary"
-                        android:textStyle="bold"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginStart="12dp"/>
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
 
-                <TextView
-                        android:id="@+id/tvTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="12dp"
-                        android:textColor="@android:color/black"/>
+                    <TextView
+                            android:id="@+id/tvName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
 
-                <TextView
-                        android:id="@+id/tvCompanyTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/black"
-                        android:layout_marginStart="12dp"/>
-            </LinearLayout>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+                    <TextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-    <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+                    <TextView
+                            android:id="@+id/tvCompanyTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="org.hib.socialcv.ui.ProfileActivity">
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context="org.hib.socialcv.ui.ProfileActivity">
 
                 <ScrollView
                         android:layout_width="match_parent"
@@ -81,9 +95,9 @@
                     <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            app:cardCornerRadius="4dp"
                             app:cardElevation="4dp"
                             app:cardMaxElevation="6dp"
-                            app:cardCornerRadius="4dp"
                             app:cardUseCompatPadding="false">
 
                         <LinearLayout
@@ -99,7 +113,6 @@
                                     android:layout_marginTop="12dp"
                                     android:layout_marginEnd="150dp"
                                     android:layout_marginBottom="12dp"
-                                    android:text="Space to say something about me and explain what my passion is and what I would like to do."
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -149,17 +162,15 @@
                                         android:clipChildren="false"
                                         android:gravity="center">
 
-                                    <ImageView
-                                            android:id="@+id/imgCommunity"
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
-                                            android:layout_gravity="center"
-                                            android:scaleType="fitXY" />
+                                    <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/recyclerViewCommunities"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content" />
                                 </LinearLayout>
                             </LinearLayout>
 
                             <LinearLayout
-                                    android:id="@+id/linMyEvents"
+                                    android:id="@+id/linMyProjects"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="12dp"
@@ -169,16 +180,15 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="12dp"
-                                        android:text="My events"
+                                        android:text="My projects"
                                         android:textColor="@color/colorLightGrey"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
 
-                                <ImageView
-                                        android:id="@+id/imgEvent"
-                                        android:layout_width="145dp"
-                                        android:layout_height="125dp"
-                                        android:scaleType="fitXY" />
+                                <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/recyclerViewProjects"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -187,20 +197,21 @@
 
                 </ScrollView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabImage"
-            android:layout_width="97dp"
-            android:layout_height="97dp"
-            android:layout_marginEnd="6sp"
-            android:src="@drawable/ic_user"
-            app:backgroundTint="#E5E5E5"
-            app:maxImageSize="87dp"
-            app:fabCustomSize="97dp"
-            app:layout_anchor="@id/appbar"
-            app:layout_anchorGravity="bottom|right|end" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabImage"
+                android:layout_width="97dp"
+                android:layout_height="97dp"
+                android:layout_marginEnd="6sp"
+                android:src="@drawable/ic_user"
+                app:backgroundTint="#E5E5E5"
+                app:fabCustomSize="97dp"
+                app:layout_anchor="@id/appbar"
+                app:layout_anchorGravity="bottom|right|end"
+                app:maxImageSize="87dp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

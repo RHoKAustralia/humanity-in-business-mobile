@@ -99,7 +99,7 @@ class ProjectsListActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
     private fun setProfile(profileModel: ProfileModel) {
         nav_header_textView.text = profileModel.full_name
-        nav_header_points.text = "${profileModel.hours} Hours"
+        nav_header_points.text = "${profileModel.contributed_hours} Hours"
         val url = PreferenceUtils().getSelectedAvatar(this)
         if (!url.isNullOrBlank()) {
             GlideApp.with(this)

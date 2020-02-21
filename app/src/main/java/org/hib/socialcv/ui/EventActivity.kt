@@ -54,10 +54,22 @@ class EventActivity : AppCompatActivity() {
 
                         eventsList = it
 
-                        listAdapter.setList(eventsList)
+                        if(eventsList.isNullOrEmpty()) {
+                            Toast.makeText(
+                                applicationContext,
+                                "Oops, could not find any event, please select a different community!",
+                                Toast.LENGTH_LONG)
+                                .show()
+                            PreferenceUtils().setSelectedCommunityId(this@EventActivity, "") // Reset selection
+                            startActivity(Intent(this@EventActivity, CommunitySelectionActivity::class.java))
+                            finish()
+                        } else {
 
-                        for(event: EventModel in eventsList) {
-                            getAttendees(event.id)
+                            listAdapter.setList(eventsList)
+
+                            for (event: EventModel in eventsList) {
+                                getAttendees(event.id)
+                            }
                         }
                     }
                 }

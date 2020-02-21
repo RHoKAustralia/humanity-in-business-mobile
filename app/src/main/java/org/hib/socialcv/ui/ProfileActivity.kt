@@ -5,12 +5,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
 import org.hib.socialcv.ui.viewmodel.CommunityModel
-import org.hib.socialcv.ui.viewmodel.EventModel
 import org.hib.socialcv.ui.viewmodel.ProfileModel
+import org.hib.socialcv.ui.viewmodel.ProjectModel
 import org.hib.socialcv.utils.GlideApp
 import org.hib.socialcv.utils.PreferenceUtils
 import retrofit2.Call
@@ -27,9 +28,6 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         getProfile()
-        val communityId = PreferenceUtils().getSelectedCommunityId(this)
-        getAllEvents(communityId)
-        getCommunityProfile(communityId.toInt())
     }
 
     private fun getProfile() {
@@ -65,10 +63,16 @@ class ProfileActivity : AppCompatActivity() {
             })
     }
 
+    private fun hideLoadingAnimation() {
+        animationView.visibility = View.GONE
+        layoutContainer.visibility = View.VISIBLE
+    }
+
     private fun setProfile(profileModel: ProfileModel) {
         this.profileModel = profileModel
         tvName.text = profileModel.full_name
-        tvPoints.text = profileModel.hours.toString()
+        tvAboutMe.text = profileModel.why_join_hib
+        tvPoints.text = profileModel.contributed_hours.toString()
         tvTitle.text = profileModel.title
 
         if (!profileModel.image_url.isNullOrBlank() && profileModel.image_url.contains(
@@ -84,68 +88,33 @@ class ProfileActivity : AppCompatActivity() {
         } else {
             fabImage.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_user))
         }
+
+        loadCommunities(profileModel.communities)
+        loadProjects(profileModel.projects)
     }
 
-    private fun hideLoadingAnimation() {
-//        animationView.visibility = View.GONE
-//        layoutContainer.visibility = View.VISIBLE
+    private fun loadCommunities(list: List<CommunityModel>) {
+        val layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewCommunities.layoutManager = layoutManager
+        val adapter = ImageAdapter(
+            this@ProfileActivity, R.layout.item_image_list
+        )
+        adapter.setList(list.mapNotNull { it.image_url })
+        recyclerViewCommunities.adapter = adapter
     }
 
-    private fun getAllEvents(communityId: String) {
-        ServiceAPI().getAllEvents(communityId,
-            object : Callback<List<EventModel>> {
-                override fun onResponse(
-                    call: Call<List<EventModel>>,
-                    response: Response<List<EventModel>>
-                ) {
-                    response.body()?.let {
-                        setUpcomingEvent(it)
-                    }
-                    hideLoadingAnimation()
-                }
-
-                override fun onFailure(call: Call<List<EventModel>>, t: Throwable) {
-                    Toast.makeText(
-                        applicationContext,
-                        "Oops, could not fetch events!",
-                        Toast.LENGTH_LONG
-                    )
-                        .show()
-                }
-            })
+    private fun loadProjects(list: List<ProjectModel>) {
+        val layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewProjects.layoutManager = layoutManager
+        val adapter = ImageAdapter(
+            this@ProfileActivity, R.layout.item_image_list_2
+        )
+        adapter.setList(list.mapNotNull { it.image_url })
+        recyclerViewProjects.adapter = adapter
     }
 
-    private fun setUpcomingEvent(upcomingEvents: List<EventModel>?) {
-        val eventModel = upcomingEvents?.firstOrNull()
-        if (eventModel != null) {
-            GlideApp.with(this@ProfileActivity)
-                .load(eventModel.image_url)
-                .into(imgEvent)
-        } else {
-            linMyEvents.visibility = View.GONE
-        }
-    }
-
-    private fun getCommunityProfile(communityId: Int) {
-        ServiceAPI().getCommunityProfile(
-            communityId,
-            object : Callback<CommunityModel> {
-                override fun onResponse(
-                    call: Call<CommunityModel>,
-                    response: Response<CommunityModel>
-                ) {
-                    response.body()?.let {
-                        GlideApp.with(this@ProfileActivity)
-                            .load(it.image_url)
-                            .into(imgCommunity)
-                    }
-                }
-
-                override fun onFailure(call: Call<CommunityModel>, t: Throwable) {
-
-                }
-            })
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

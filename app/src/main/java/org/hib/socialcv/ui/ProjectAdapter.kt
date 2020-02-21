@@ -44,7 +44,7 @@ class ProjectAdapter(mainContext: Context, private val clickListener: (TeamModel
         fun bindView(team: TeamModel, context: Context) {
             itemView.tvItemTitle.text = team.project.name
 //            itemView.tvItemDate.text = team.project.description
-            itemView.tvItemPoints.text = "<project owner>"//team.project.owner // TODO change to hours
+            itemView.tvItemPoints.text = team.project.owner // TODO change to hours
 
             GlideApp.with(context)
                 .load(team.project.image_url)
@@ -63,8 +63,8 @@ class ProjectAdapter(mainContext: Context, private val clickListener: (TeamModel
                 itemView.linDetailsContainer.visibility = View.VISIBLE
                 itemView.linItemContainer.visibility = View.GONE
                 itemView.tvTitle.text = team.project.name
-                itemView.tvSubTitle.text = "<project owner>"//team.project.owner
-                itemView.tvDesc.text = "<Big description about what this project is about and all the explanation about it and why I should join this project>"//team.project.description
+                itemView.tvSubTitle.text = team.project.owner
+                itemView.tvDesc.text = team.project.description
 
                 GlideApp.with(context)
                     .load(team.project.image_url)

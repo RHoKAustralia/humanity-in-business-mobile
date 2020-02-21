@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.item_image_list.view.*
 import org.hib.socialcv.R
 import org.hib.socialcv.utils.GlideApp
 
-class ImageAdapter(mainContext: Context) :
+class ImageAdapter(mainContext: Context, val layoutResId: Int) :
     androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     private val context = mainContext
@@ -17,7 +17,7 @@ class ImageAdapter(mainContext: Context) :
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val v = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_image_list, viewGroup, false)
+            .inflate(layoutResId, viewGroup, false)
         return ViewHolder(v)
     }
 

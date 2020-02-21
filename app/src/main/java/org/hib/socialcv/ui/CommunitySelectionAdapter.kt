@@ -56,6 +56,9 @@ class CommunitySelectionAdapter(
 
             GlideApp.with(context)
                 .load(communityModel.image_url)
+                .error(R.drawable.placeholder_community_logo)
+                .placeholder(R.drawable.placeholder_community_logo)
+                .skipMemoryCache(true)
                 .into(itemView.imgCommunity)
 
             itemView.setOnClickListener {
