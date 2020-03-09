@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_community_profile.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
-import org.hib.socialcv.ui.viewmodel.CommunityModel
+import org.hib.socialcv.ui.model.CommunityModel
 import org.hib.socialcv.utils.GlideApp
 import retrofit2.Call
 import retrofit2.Callback

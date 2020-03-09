@@ -87,5 +87,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_red_dark"/>
 </LinearLayout>

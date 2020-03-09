@@ -5,7 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.hib.socialcv.BuildConfig
 import org.hib.socialcv.http.model.*
-import org.hib.socialcv.ui.viewmodel.*
+import org.hib.socialcv.ui.model.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit

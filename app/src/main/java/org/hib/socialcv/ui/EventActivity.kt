@@ -7,13 +7,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_event.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
-import org.hib.socialcv.ui.viewmodel.EventModel
-import org.hib.socialcv.ui.viewmodel.MembersModel
-import org.hib.socialcv.ui.viewmodel.ProfileModel
+import org.hib.socialcv.ui.model.EventModel
+import org.hib.socialcv.ui.model.MembersModel
+import org.hib.socialcv.ui.model.ProfileModel
 import org.hib.socialcv.utils.GlideApp
 import org.hib.socialcv.utils.PreferenceUtils
 import retrofit2.Call
@@ -147,6 +146,8 @@ class EventActivity : AppCompatActivity() {
     }
 
     private fun getAttendees(eventId: Int) {
+        animationView.visibility = View.VISIBLE
+        layoutContainer.visibility = View.GONE
         ServiceAPI().getAtendeesByEventId(
             eventId.toString(),
             object : Callback<List<MembersModel>> {
@@ -154,6 +155,8 @@ class EventActivity : AppCompatActivity() {
                     call: Call<List<MembersModel>>,
                     response: Response<List<MembersModel>>
                 ) {
+                    animationView.visibility = View.GONE
+                    layoutContainer.visibility = View.VISIBLE
                     response.body()?.let { list ->
                         eventsList.find { it.id == eventId }?.attendeesList = list
                         listAdapter.setList(eventsList)
@@ -165,6 +168,8 @@ class EventActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<MembersModel>>, t: Throwable) {
+                    animationView.visibility = View.GONE
+                    layoutContainer.visibility = View.VISIBLE
                     Toast.makeText(
                         applicationContext,
                         "Oops, could not fetch attendees!",

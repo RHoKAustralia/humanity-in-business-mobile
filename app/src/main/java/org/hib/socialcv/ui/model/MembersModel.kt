@@ -1,4 +1,4 @@
-package org.hib.socialcv.ui.viewmodel
+package org.hib.socialcv.ui.model
 
 data class MembersModel(
     val user_Id: Int,

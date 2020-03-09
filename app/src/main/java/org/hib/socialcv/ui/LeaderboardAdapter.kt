@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_leaderboard.view.*
 import org.hib.socialcv.R
-import org.hib.socialcv.ui.viewmodel.UserLeaderBoardModel
+import org.hib.socialcv.ui.model.UserLeaderBoardModel
 
 class LeaderboardAdapter(mainContext: Context, private val clickListener: (UserLeaderBoardModel) -> Unit) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 

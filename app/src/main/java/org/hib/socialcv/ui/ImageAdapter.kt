@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_image_list.view.*
 import org.hib.socialcv.R
+import org.hib.socialcv.ui.model.ImageModel
 import org.hib.socialcv.utils.GlideApp
 
-class ImageAdapter(mainContext: Context, val layoutResId: Int) :
+class ImageAdapter(mainContext: Context, private val layoutResId: Int) :
     androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     private val context = mainContext
 
-    private var list = listOf<String>()
+    private var list = listOf<ImageModel>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val v = LayoutInflater.from(viewGroup.context)
@@ -21,7 +22,7 @@ class ImageAdapter(mainContext: Context, val layoutResId: Int) :
         return ViewHolder(v)
     }
 
-    fun setList(listChallenges: List<String>) {
+    fun setList(listChallenges: List<ImageModel>) {
         this.list = listChallenges
         notifyDataSetChanged()
     }
@@ -38,10 +39,13 @@ class ImageAdapter(mainContext: Context, val layoutResId: Int) :
     class ViewHolder(
         itemView: View
     ) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-        fun bindView(url: String, context: Context) {
-            GlideApp.with(context)
-                .load(url)
-                .into(itemView.imgItem)
+        fun bindView(imageModel: ImageModel?, context: Context) {
+            itemView.imgTitle.text = imageModel?.name?:""
+            imageModel?.image_url?.let {
+                GlideApp.with(context)
+                    .load(it)
+                    .into(itemView.imgItem)
+            }
         }
 
     }

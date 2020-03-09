@@ -2,23 +2,15 @@ package org.hib.socialcv.ui
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import kotlinx.android.synthetic.main.item_event_selection.view.*
 import org.hib.socialcv.R
-import org.hib.socialcv.http.ServiceAPI
-import org.hib.socialcv.ui.viewmodel.EventModel
-import org.hib.socialcv.ui.viewmodel.MembersModel
+import org.hib.socialcv.ui.model.EventModel
 import org.hib.socialcv.utils.DateUtils
 import org.hib.socialcv.utils.GlideApp
-import org.hib.socialcv.utils.PreferenceUtils
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class EventSelectionAdapter(mainContext: Context, private val clickListener: (EventModel) -> Unit, private val attendeesClickListener: (EventModel) -> Unit) :
@@ -80,7 +72,8 @@ class EventSelectionAdapter(mainContext: Context, private val clickListener: (Ev
             }
             if(eventModel.attendeesList != null && eventModel.attendeesList.isNotEmpty()) {
                 itemView.tvAttendeesCount.visibility = View.VISIBLE
-                itemView.tvAttendeesCount.text = "${eventModel.attendeesList.size} going"
+                itemView.tvAttendeesCount.text = "${eventModel.attendeesList.size} attending, click here to see who is going"
+                itemView.tvAttendeesCount.paintFlags = Paint.UNDERLINE_TEXT_FLAG
                 itemView.tvAttendeesCount.setOnClickListener {
                     attendeesClickListener(eventModel)
                 }

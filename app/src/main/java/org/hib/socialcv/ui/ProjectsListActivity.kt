@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
 import org.hib.socialcv.http.model.RequestJoinTeamModel
-import org.hib.socialcv.ui.viewmodel.ProfileModel
-import org.hib.socialcv.ui.viewmodel.TeamModel
+import org.hib.socialcv.ui.model.ProfileModel
+import org.hib.socialcv.ui.model.TeamModel
 import org.hib.socialcv.utils.GlideApp
 import org.hib.socialcv.utils.PreferenceUtils
 import retrofit2.Call

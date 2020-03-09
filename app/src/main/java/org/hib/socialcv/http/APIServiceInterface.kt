@@ -1,7 +1,7 @@
 package org.hib.socialcv.http
 
 import org.hib.socialcv.http.model.*
-import org.hib.socialcv.ui.viewmodel.*
+import org.hib.socialcv.ui.model.*
 import retrofit2.Call
 import retrofit2.http.*
 

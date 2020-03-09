@@ -156,11 +156,9 @@
 
                                 <LinearLayout
                                         android:id="@+id/linContainer"
-                                        android:layout_width="145dp"
-                                        android:layout_height="125dp"
-                                        android:background="@drawable/rounded_background"
-                                        android:clipChildren="false"
-                                        android:gravity="center">
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:clipChildren="false">
 
                                     <androidx.recyclerview.widget.RecyclerView
                                             android:id="@+id/recyclerViewCommunities"

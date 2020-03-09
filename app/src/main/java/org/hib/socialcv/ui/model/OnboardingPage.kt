@@ -1,4 +1,4 @@
-package org.hib.socialcv.ui.viewmodel
+package org.hib.socialcv.ui.model
 
 import android.graphics.drawable.Drawable
 

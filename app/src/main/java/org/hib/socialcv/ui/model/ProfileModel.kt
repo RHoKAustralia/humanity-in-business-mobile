@@ -1,4 +1,4 @@
-package org.hib.socialcv.ui.viewmodel
+package org.hib.socialcv.ui.model
 
 class ProfileModel(
     val id: Int,

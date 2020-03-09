@@ -10,8 +10,8 @@ import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_community_selection.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
-import org.hib.socialcv.ui.viewmodel.CommunityModel
-import org.hib.socialcv.ui.viewmodel.ProfileModel
+import org.hib.socialcv.ui.model.CommunityModel
+import org.hib.socialcv.ui.model.ProfileModel
 import org.hib.socialcv.utils.GlideApp
 import org.hib.socialcv.utils.PreferenceUtils
 import retrofit2.Call

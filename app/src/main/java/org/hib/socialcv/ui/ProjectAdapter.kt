@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_project.view.*
 import org.hib.socialcv.R
-import org.hib.socialcv.ui.viewmodel.TeamModel
+import org.hib.socialcv.ui.model.TeamModel
 import org.hib.socialcv.utils.GlideApp
 
 class ProjectAdapter(mainContext: Context, private val clickListener: (TeamModel) -> Unit) :

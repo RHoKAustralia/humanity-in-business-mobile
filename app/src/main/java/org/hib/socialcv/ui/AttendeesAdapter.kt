@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_attendees.view.*
 import org.hib.socialcv.R
-import org.hib.socialcv.ui.viewmodel.MembersModel
+import org.hib.socialcv.ui.model.MembersModel
 import org.hib.socialcv.utils.GlideApp
 
 class AttendeesAdapter(mainContext: Context, private val clickListener: (MembersModel) -> Unit) :

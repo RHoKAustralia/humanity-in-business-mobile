@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_leaderboard.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
-import org.hib.socialcv.ui.viewmodel.UserLeaderBoardModel
+import org.hib.socialcv.ui.model.UserLeaderBoardModel
 import org.hib.socialcv.utils.PreferenceUtils
 import retrofit2.Call
 import retrofit2.Callback

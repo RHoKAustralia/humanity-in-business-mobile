@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_community_selection.view.*
 import org.hib.socialcv.R
-import org.hib.socialcv.ui.viewmodel.CommunityModel
+import org.hib.socialcv.ui.model.CommunityModel
 import org.hib.socialcv.utils.GlideApp
 
 class CommunitySelectionAdapter(

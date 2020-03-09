@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
-import org.hib.socialcv.ui.viewmodel.CommunityModel
-import org.hib.socialcv.ui.viewmodel.ProfileModel
-import org.hib.socialcv.ui.viewmodel.ProjectModel
+import org.hib.socialcv.ui.model.CommunityModel
+import org.hib.socialcv.ui.model.ImageModel
+import org.hib.socialcv.ui.model.ProfileModel
+import org.hib.socialcv.ui.model.ProjectModel
 import org.hib.socialcv.utils.GlideApp
 import org.hib.socialcv.utils.PreferenceUtils
 import retrofit2.Call
@@ -100,7 +101,7 @@ class ProfileActivity : AppCompatActivity() {
         val adapter = ImageAdapter(
             this@ProfileActivity, R.layout.item_image_list
         )
-        adapter.setList(list.mapNotNull { it.image_url })
+        adapter.setList(list.map { ImageModel(it.id, it.name, it.image_url )})
         recyclerViewCommunities.adapter = adapter
     }
 
@@ -111,7 +112,7 @@ class ProfileActivity : AppCompatActivity() {
         val adapter = ImageAdapter(
             this@ProfileActivity, R.layout.item_image_list_2
         )
-        adapter.setList(list.mapNotNull { it.image_url })
+        adapter.setList(list.map { ImageModel(it.id.toString(), it.name, it.image_url )})
         recyclerViewProjects.adapter = adapter
     }
 
