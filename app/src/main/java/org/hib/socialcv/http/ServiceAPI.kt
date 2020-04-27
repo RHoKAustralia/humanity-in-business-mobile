@@ -85,6 +85,14 @@ class ServiceAPI {
         call.enqueue(callback)
     }
 
+    fun getTeamById(
+        teamId: String,
+        callback: Callback<TeamModel>
+    ) {
+        val call: Call<TeamModel> = getService().getTeamById(teamId)
+        call.enqueue(callback)
+    }
+
     fun getAtendeesByEventId(
         eventId: String,
         callback: Callback<List<MembersModel>>

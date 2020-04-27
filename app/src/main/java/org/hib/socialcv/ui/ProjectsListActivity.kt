@@ -108,18 +108,6 @@ class ProjectsListActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         }
     }
 
-//    private fun selectionListener(selectedTeam: TeamModel) {
-//        val intent = Intent(this, TeamActivity::class.java)
-//        intent.putExtra("team_id", selectedTeam.team_Id)
-//        intent.putExtra("project_id", selectedTeam.project.id)
-//        intent.putExtra("name", selectedTeam.project.name)
-//        intent.putExtra("description", selectedTeam.project.description)
-//        intent.putExtra("owner", selectedTeam.project.owner)
-//        intent.putExtra("image_url", selectedTeam.project.image_url)
-//        startActivity(intent)
-
-//    }
-
     private fun selectionListener(selectedTeam: TeamModel) {
         val request = RequestJoinTeamModel(
             PreferenceUtils().getUserId(this)

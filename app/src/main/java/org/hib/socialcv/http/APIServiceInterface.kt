@@ -37,6 +37,9 @@ interface APIServiceInterface {
     @GET("events/{eventId}/teams")
     fun getTeamsByEventId(@Path("eventId") eventId: String): Call<List<TeamModel>>
 
+    @GET("events/teams/{teamId}") // TODO
+    fun getTeamById(@Path("teamId") teamId: String): Call<TeamModel>
+
     @GET("events/{eventId}/members")
     fun getAttendeesByEventId(@Path("eventId") eventId: String): Call<List<MembersModel>>
 

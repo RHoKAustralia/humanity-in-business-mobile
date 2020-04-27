@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
         <TextView
                 android:id="@+id/nav_header_points"
                 android:layout_width="match_parent"

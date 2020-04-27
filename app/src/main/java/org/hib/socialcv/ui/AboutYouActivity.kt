@@ -42,7 +42,8 @@ class AboutYouActivity : AppCompatActivity() {
 
         val request = RequestAboutYouModel(
             etReason.text.toString(),
-            etVolunteerDays.text.toString()
+            etVolunteerDays.text.toString(),
+            etDonation.text?.toString()?.toInt() ?: 0
         )
 
         ServiceAPI().aboutYou(

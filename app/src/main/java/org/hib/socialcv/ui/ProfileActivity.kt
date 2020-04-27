@@ -72,9 +72,11 @@ class ProfileActivity : AppCompatActivity() {
     private fun setProfile(profileModel: ProfileModel) {
         this.profileModel = profileModel
         tvName.text = profileModel.full_name
-        tvAboutMe.text = profileModel.why_join_hib
+        tvCompanyTitle.text = profileModel.company.name
+        tvAboutMe.text = profileModel.why_join_hib.capitalize()
         tvPoints.text = profileModel.contributed_hours.toString()
         tvTitle.text = profileModel.title
+        tvPledgeAmount.text = "$ " + profileModel.yearly_donations_pledge.toString()
 
         if (!profileModel.image_url.isNullOrBlank() && profileModel.image_url.contains(
                 "http",
@@ -101,18 +103,18 @@ class ProfileActivity : AppCompatActivity() {
         val adapter = ImageAdapter(
             this@ProfileActivity, R.layout.item_image_list
         )
-        adapter.setList(list.map { ImageModel(it.id, it.name, it.image_url )})
+        adapter.setList(list.map { ImageModel(it.id, it.name, it.image_url)})
         recyclerViewCommunities.adapter = adapter
     }
 
     private fun loadProjects(list: List<ProjectModel>) {
         val layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerViewProjects.layoutManager = layoutManager
         val adapter = ImageAdapter(
             this@ProfileActivity, R.layout.item_image_list_2
         )
-        adapter.setList(list.map { ImageModel(it.id.toString(), it.name, it.image_url )})
+        adapter.setList(list.map { ImageModel(it.id.toString(), it.name, it.image_url)})
         recyclerViewProjects.adapter = adapter
     }
 
