@@ -17,10 +17,10 @@
                     android:id="@+id/nav_item_community"
                     android:icon="@drawable/ic_hand"
                     android:title="Community" />
-            <item
-                    android:id="@+id/nav_item_event"
-                    android:icon="@drawable/ic_cal"
-                    android:title="Event" />
+<!--            <item-->
+<!--                    android:id="@+id/nav_item_event"-->
+<!--                    android:icon="@drawable/ic_cal"-->
+<!--                    android:title="Event" />-->
 
 <!--            <item-->
 <!--                    android:id="@+id/nav_item_avatar"-->

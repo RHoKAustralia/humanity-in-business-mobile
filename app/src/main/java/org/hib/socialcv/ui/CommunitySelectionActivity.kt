@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_community_selection.*
 import org.hib.socialcv.R
 import org.hib.socialcv.http.ServiceAPI
 import org.hib.socialcv.ui.model.CommunityModel
+import org.hib.socialcv.ui.model.EventModel
 import org.hib.socialcv.ui.model.ProfileModel
 import org.hib.socialcv.utils.GlideApp
 import org.hib.socialcv.utils.PreferenceUtils
@@ -71,13 +72,53 @@ class CommunitySelectionActivity : AppCompatActivity() {
         PreferenceUtils().setSelectedCommunityId(this, communitySelectionModel.id)
         layoutContainer.visibility = View.GONE
         animationView.visibility = View.VISIBLE
-
-        val intent = Intent(this, EventActivity::class.java)
-        intent.putExtra("community_id", communitySelectionModel.id)
-        startActivity(intent)
-        finish()
+        getAllEvents(communitySelectionModel.id)
+//        val intent = Intent(this, EventActivity::class.java)
+//        intent.putExtra("community_id", communitySelectionModel.id)
+//        startActivity(intent)
+//        finish()
 
     }
+
+    private fun getAllEvents(communityId: String) {
+        ServiceAPI().getAllEvents(communityId,
+            object : Callback<List<EventModel>> {
+                override fun onResponse(
+                    call: Call<List<EventModel>>,
+                    response: Response<List<EventModel>>
+                ) {
+                    response.body()?.let {
+                        animationView.visibility = View.GONE
+                        layoutContainer.visibility = View.VISIBLE
+                        if(it.isNullOrEmpty()) {
+                            PreferenceUtils().setSelectedCommunityId(this@CommunitySelectionActivity, "") // Reset selection
+                            Toast.makeText(
+                                applicationContext,
+                                "Oops, no events listed for this community, please select another one!",
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                        } else {
+                            PreferenceUtils().setSelectedEventId(this@CommunitySelectionActivity, it[0].id.toString())
+                            startActivity(Intent(applicationContext, ProjectsListActivity::class.java))
+                            finish()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<List<EventModel>>, t: Throwable) {
+                    animationView.visibility = View.GONE
+                    layoutContainer.visibility = View.VISIBLE
+                    Toast.makeText(
+                        applicationContext,
+                        "Oops, could not fetch events!",
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+                }
+            })
+    }
+
 
     private fun getProfile() {
         var profileId = intent.getStringExtra("user_id")

@@ -59,12 +59,15 @@ class LoginActivity : AppCompatActivity() {
 
                         if (preferenceUtils.getSelectedCommunityId(this@LoginActivity).isBlank()) {
                             startActivity(Intent(this@LoginActivity, CommunitySelectionActivity::class.java))
-                        } else  if (preferenceUtils.getSelectedEventId(this@LoginActivity).isBlank()) {
-                            val communityId = PreferenceUtils().getSelectedCommunityId(this@LoginActivity)
-                            val intent = Intent(this@LoginActivity, EventActivity::class.java)
-                            intent.putExtra("community_id", communityId)
-                            startActivity(intent)
-                        } else {
+                        }
+                        // TODO fetch selected ids from profile, not from shared prefs ( issue is if you login in a new place, it tries to select new community)
+//                        else  if (preferenceUtils.getSelectedEventId(this@LoginActivity).isBlank()) {
+//                            val communityId = PreferenceUtils().getSelectedCommunityId(this@LoginActivity)
+//                            val intent = Intent(this@LoginActivity, EventActivity::class.java)
+//                            intent.putExtra("community_id", communityId)
+//                            startActivity(intent)
+//                        }
+                        else {
                             startActivity(Intent(applicationContext, ProjectsListActivity::class.java))
                         }
                         finish()

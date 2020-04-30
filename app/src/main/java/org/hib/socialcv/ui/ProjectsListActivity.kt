@@ -183,13 +183,13 @@ class ProjectsListActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                 startActivity(Intent(this, CommunitySelectionActivity::class.java))
                 finish()
             }
-            R.id.nav_item_event -> {
-                val communityId = PreferenceUtils().getSelectedCommunityId(this)
-                val intent = Intent(this, EventActivity::class.java)
-                intent.putExtra("community_id", communityId)
-                startActivity(intent)
-                finish()
-            }
+//            R.id.nav_item_event -> {
+//                val communityId = PreferenceUtils().getSelectedCommunityId(this)
+//                val intent = Intent(this, EventActivity::class.java)
+//                intent.putExtra("community_id", communityId)
+//                startActivity(intent)
+//                finish()
+//            }
 
 //            R.id.nav_item_avatar -> {
 //                startActivity(Intent(this, AvatarSelectionActivity::class.java))
