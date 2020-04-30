@@ -124,7 +124,7 @@
                                     android:layout_marginStart="12dp"
                                     android:layout_marginEnd="12dp"
                                     android:layout_marginBottom="12dp"
-                                    android:text="Total hours contributed"
+                                    android:text="Total hours pledged"
                                     android:textColor="@color/colorLightGrey"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />

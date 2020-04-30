@@ -131,7 +131,7 @@ class EventActivity : AppCompatActivity() {
     }
 
     private fun setProfile(profileModel: ProfileModel) {
-        tvProfileName.text = "Hey, ${profileModel.full_name.split(" ")[0]}"
+        tvProfileName.text = "Hey, ${profileModel.full_name?.split(" ")?.get(0)}"
 
         if (!profileModel.image_url.isNullOrBlank() && profileModel.image_url.contains("http", false)) {
             GlideApp.with(this)

@@ -72,12 +72,14 @@ class ProfileActivity : AppCompatActivity() {
     private fun setProfile(profileModel: ProfileModel) {
         this.profileModel = profileModel
         tvName.text = profileModel.full_name
-        tvCompanyTitle.text = profileModel.company.name
-        tvAboutMe.text = profileModel.why_join_hib.capitalize()
-        tvPoints.text = profileModel.contributed_hours.toString()
+        tvCompanyTitle.text = profileModel.company?.name
+        tvAboutMe.text = profileModel.why_join_hib?.capitalize()
+        tvPoints.text = profileModel.contributed_hours?.toString()
         tvTitle.text = profileModel.title
-        tvPledgeAmount.text = "$ " + profileModel.yearly_donations_pledge.toString()
-
+        val pledge = profileModel.yearly_donations_pledge?.toString()
+        if(!pledge.isNullOrBlank()) {
+            tvPledgeAmount.text = "$ $pledge"
+        } else tvPledgeAmount.text = "$ 0"
         if (!profileModel.image_url.isNullOrBlank() && profileModel.image_url.contains(
                 "http",
                 false
@@ -91,9 +93,12 @@ class ProfileActivity : AppCompatActivity() {
         } else {
             fabImage.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_user))
         }
-
-        loadCommunities(profileModel.communities)
-        loadProjects(profileModel.projects)
+        profileModel.communities?.let {
+            loadCommunities(it)
+        }
+        profileModel.projects?.let {
+            loadProjects(it)
+        }
     }
 
     private fun loadCommunities(list: List<CommunityModel>) {
